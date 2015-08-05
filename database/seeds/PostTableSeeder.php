@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class PostTableSeeder extends Seeder
 {
     /**
@@ -11,8 +12,11 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('posts');
 
-        factory(App\Post::class, 50)->create();
+        App\Post::truncate();
+
+        factory(App\Post::class, 20)->create();
     }
 }

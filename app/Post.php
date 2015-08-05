@@ -18,13 +18,17 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'body', 'active'];
+    protected $fillable = ['title', 'body','slug' ,'active'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     *
-    protected $hidden = ['password', 'remember_token'];
-     */
+    protected $dates = ['published_at'];
+/*
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+
+        if (! $this->exists) {
+            $this->attributes['slug'] = str_slug($value);
+        }
+    }
+*/
 }

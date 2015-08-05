@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Str;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -25,11 +27,15 @@ $factory->define(App\User::class, function ($faker) {
 
 $factory->define(App\Post::class, function ($faker) {
 
+    $title = $faker->sentence(mt_rand(3,10));
+    $slug  = Str::slug($title);
+
     return [
-        'title'  => $faker->sentence(),
-        'content'   => $faker->text,
-        'slug' =>$faker->sentence(),
-        'active' => $faker->boolean
+        'title'  => $title,
+        'content'   => join("n\n", $faker->paragraphs(mt_rand(3,6))),
+        'slug' => $slug,
+        'active' => $faker->boolean,
+        'published_at' => $faker->dateTimeBetween('-1 month','+3 days')
     ];
 });
 

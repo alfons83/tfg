@@ -46,6 +46,17 @@ Route::get('confirmation/{token}', [
 ]);
 
 
+//  Slug Routes
+
+
+Route::get('blog/post/{slug}',[
+
+    'uses' => 'PostController@show',
+    'as'   => 'post'
+]);
+
+Route::get('blog/posts', 'PostController@index');
+
 //  Password reset ink request routes ...
 
 Route::get('password/email','Auth\PasswordController@getEmail');

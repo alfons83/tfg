@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->boolean('active');
             $table->timestamps();
+            $table->timestamp('published_at');
         });
     }
 
