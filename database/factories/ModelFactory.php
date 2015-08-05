@@ -28,6 +28,7 @@ $factory->define(App\Post::class, function ($faker) {
     return [
         'title'  => $faker->sentence(),
         'content'   => $faker->text,
+        'slug' =>$faker->sentence(),
         'active' => $faker->boolean
     ];
 });
