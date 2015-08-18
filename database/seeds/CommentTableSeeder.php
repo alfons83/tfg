@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-
-class PostTableSeeder extends Seeder
+class CommentTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +11,10 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('comments');
 
-        DB::table('posts');
+        //App\Comment::truncate();
 
-      //  App\Post::truncate();
-
-        factory(App\Post::class, 50)->create();
+        factory(App\Comment::class, 50)->create();
     }
 }

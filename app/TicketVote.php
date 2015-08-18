@@ -4,21 +4,22 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User_profile extends Model
+class TicketVote extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'user_profiles';
+    protected $table = 'ticket_votes';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['bio', 'twitter', 'website'];
+
+    //protected $fillable = ['name', 'description'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -27,11 +28,4 @@ class User_profile extends Model
      *
     protected $hidden = ['password', 'remember_token'];
      */
-
-
-    public function getAgeAttribute()
-    {
-        return \Carbon\Carbon::parse($this->birthdate)->age;
-    }
 }
-

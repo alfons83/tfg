@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTagsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,19 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
+
             $table->increments('id');
-            $table->string('name',20);
+            $table->string('name');
             $table->mediumText('description')->nullable();
             $table->timestamps();
+
+            $table->integer('post_id')->unsigned();
+
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onDelete('cascade');
         });
     }
 
@@ -27,6 +35,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tags');
+        Schema::drop('categories');
     }
 }

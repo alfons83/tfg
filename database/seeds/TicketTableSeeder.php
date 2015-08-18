@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-
-class PostTableSeeder extends Seeder
+class TicketTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +11,10 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('tickets');
 
-        DB::table('posts');
+       // App\Ticket::truncate();
 
-      //  App\Post::truncate();
-
-        factory(App\Post::class, 50)->create();
+        factory(App\Ticket::class, 50)->create();
     }
 }

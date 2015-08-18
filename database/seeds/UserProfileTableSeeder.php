@@ -13,6 +13,8 @@ class UserProfileTableSeeder extends Seeder
     {
         DB::table('user_profiles');
 
+       // App\User_profile::truncate();
+
         factory(App\User_profile::class, 50)->create();
     }
 }

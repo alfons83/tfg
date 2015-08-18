@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blog;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Post as Post;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
-//use App\Http\Controllers\Controller;
+
 
 class PostController extends Controller
 {
@@ -18,8 +20,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+
+         $posts = Post::all();
         return \View::make('blog/list', compact('posts'));
+
+/*
+        $posts = Post::where('published_at', '<=', Carbon::now() )
+            ->orderBy('published_at','desc')
+            ->paginate(config('blog.posts_per_page'));
+
+        */
     }
 
     /**
@@ -51,8 +61,17 @@ class PostController extends Controller
      */
     public function show($slug)
     {
+
         $post = Post::where('slug','=', $slug)->firstOrFail();
         return \View::make('blog/post', compact('post'));
+
+        /*
+
+        $post = Post::whereSlug($slug)->firstOrFail();
+
+        return view('blog.post')->withPost($post);
+
+        */
     }
 
     /**

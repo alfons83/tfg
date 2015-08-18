@@ -10,7 +10,7 @@
                         @include('partials/success')
                         <h1>Laravel 5</h1>
                        <ul>
-                           <li><a href="#">Edit profile</a></li>
+                           <li><a href="{{ route('admin.users.edit') }}">Edit profile</a></li>
                            <li><a href="{{ url('account/password') }}">Change password</a></li>
                        </ul>
                     </div>

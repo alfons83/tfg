@@ -16,6 +16,8 @@ Route::get('/', [
     'as'   => 'home'
     ]);
 
+
+
 // Authentication routes ...
 
 Route::get('login', [
@@ -51,11 +53,11 @@ Route::get('confirmation/{token}', [
 
 Route::get('blog/post/{slug}',[
 
-    'uses' => 'PostController@show',
+    'uses' => 'Blog\PostController@show',
     'as'   => 'post'
 ]);
 
-Route::get('blog/posts', 'PostController@index');
+Route::get('blog/posts', 'Blog\PostController@index');
 
 //  Password reset ink request routes ...
 
@@ -93,6 +95,71 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin/settings', function () {
             return view('admin/settings');
         });
+
+/*
+        Route::get('admin/users/{users}',  [
+
+            'uses' => 'admin\UsersController@index',
+            'as'   => 'admin.users.index'
+
+        ]);
+
+*/
+        Route::get('admin/users', [
+            'uses' => 'admin\UsersController@index' ,
+            'as'   =>  'admin.users.index'
+        ]);
+
+        Route::get('admin/users/create', [
+            'uses' => 'admin\UsersController@create' ,
+            'as'   =>  'admin.users.create'
+        ]);
+
+        Route::post('admin/users', [
+            'uses' => 'admin\UsersController@store' ,
+            'as'   =>  'admin.users.store'
+        ]);
+
+        Route::get('admin/users/{users}', [
+            'uses' => 'admin\UsersController@show' ,
+            'as'   =>  'admin.users.show'
+        ]);
+
+        Route::get('admin/users/{users}/edit', [
+            'uses' => 'admin\UsersController@edit' ,
+            'as'   =>  'admin.users.edit'
+        ]);
+
+        Route::put('admin/users/{users}', [
+            'uses' => 'admin\UsersController@update' ,
+            'as'   =>  'admin.users.update'
+        ]);
+
+
+        Route::delete('admin/users/{users}', [
+            'uses' => 'admin\UsersController@destroy' ,
+            'as'   =>  'admin.users.destroy'
+        ]);
+
+        //Route::post('admin/users', 'admin\UsersController@store');
+
+       // Route::put('admin/users/{users}' , 'admin\UsersController@update');
+
+       // Route::delete('admin/users/{users}' , 'admin\UsersController@destroy');
+
+       // Route::get('admin/users', 'admin\UsersController@index');
+
+
+       // Route::get('admin/users/create', 'admin\UsersController@create');
+
+
+
+       // Route::get('admin/users/{users}' , 'admin\UsersController@show');
+
+       // Route::get('admin/users/{users}/edit' , 'admin\UsersController@edit');
+
+
+
 
         Route::get('admin/pagination', function () {
             return view('admin/pagination');

@@ -25,6 +25,24 @@ $factory->define(App\User::class, function ($faker) {
     ];
 });
 
+$factory->define(App\User_profile::class, function ($faker) {
+
+    return [
+        'bio' => $faker->sentence(),
+        'twitter' => $faker->userName,
+        'website' =>$faker->domainName,
+        'user_id' =>$faker->randomDigitNotNull
+    ];
+});
+
+$factory->define(App\Tag::class, function ($faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->text,
+        'post_id' =>$faker->randomDigitNotNull
+    ];
+});
+
 $factory->define(App\Post::class, function ($faker) {
 
     $title = $faker->sentence(mt_rand(3,10));
@@ -34,26 +52,59 @@ $factory->define(App\Post::class, function ($faker) {
         'title'  => $title,
         'content'   => join("n\n", $faker->paragraphs(mt_rand(3,6))),
         'slug' => $slug,
+        'user_id' =>$faker->randomDigitNotNull,
         'active' => $faker->boolean,
         'published_at' => $faker->dateTimeBetween('-1 month','+3 days')
     ];
 });
 
+$factory->define(App\Category::class, function ($faker) {
 
-$factory->define(App\Tag::class, function ($faker) {
     return [
         'name' => $faker->word,
-        'description' => $faker->text
+        'description' => $faker->text,
+        'post_id' =>$faker->randomDigitNotNull
     ];
+
 });
 
+$factory->define(App\Comment::class, function ($faker) {
 
-$factory->define(App\User_profile::class, function ($faker) {
     return [
-        'bio' => $faker->sentence(),
-        'twitter' => $faker->userName,
-        'website' =>$faker->domainName,
-        'user_id' =>$faker->randomDigitNotNull
+        'comment' => $faker->text,
+        'active' => $faker->boolean,
+        'user_id' =>$faker->randomDigitNotNull,
+        'post_id' =>$faker->randomDigitNotNull
+
     ];
+
 });
+
+$factory->define(App\Ticket::class, function ($faker) {
+
+    return [
+        'title' => $faker->sentence(mt_rand(3,10)),
+        'status' => $faker->randomElement(['open','closed']),
+        'user_id' =>$faker->randomDigitNotNull
+
+    ];
+
+});
+
+$factory->define(App\TicketVote::class, function ($faker) {
+
+    return [
+
+        'user_id' =>$faker->randomDigitNotNull,
+        'ticket_id' =>$faker->randomDigitNotNull
+
+    ];
+
+});
+
+
+
+
+
+
 

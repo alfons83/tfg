@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,13 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->string('title')->unique();
-            $table->text('content');
-            $table->string('slug')->unique();
-            $table->boolean('active');
 
-            //$table->string('upload');
+            $table->string('title',200);
+
+            $table->enum('status',['open','closed']);
 
             $table->integer('user_id')->unsigned();
 
@@ -31,7 +29,6 @@ class CreatePostsTable extends Migration
 
             $table->timestamps();
 
-            $table->timestamp('published_at');
         });
     }
 
@@ -42,6 +39,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('posts');
+        Schema::drop('tickets');
     }
 }

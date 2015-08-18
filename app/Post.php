@@ -18,6 +18,7 @@ class Post extends Model
      *
      * @var array
      */
+
     protected $fillable = ['title', 'body','slug' ,'active'];
 
     protected $dates = ['published_at'];
