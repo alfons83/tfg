@@ -39,10 +39,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @return string
      */
 
-    public function profile()
-    {
-        return $this->hasOne('App\User_profile');
-    }
+
 
 
     public function getFullNameAttribute()
@@ -71,7 +68,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @return string
      */
-
+/*
     public function setPasswordAttribute($value)
 
     {
@@ -81,6 +78,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         }
     }
-
+*/
 
 }

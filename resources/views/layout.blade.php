@@ -29,6 +29,7 @@
                 <li><a href="/">Home</a></li>
                 @if (Auth::check())
                 <li><a href="{{url('account')}}">Account</a></li>
+                    <li><a href="{{url('admin/users')}}">Users</a></li>
                 @endif
             </ul>
 

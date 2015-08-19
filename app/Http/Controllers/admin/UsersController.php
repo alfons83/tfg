@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\User as user;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -102,7 +102,7 @@ class UsersController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id, Request $request)
+   public function destroy($id, Request $request)
 
     {
         $user = User::findOrFail($id);
@@ -121,4 +121,5 @@ class UsersController extends Controller
         Session::flash('message', $message);
         return redirect()->route('admin.users.index');
     }
+
 }
