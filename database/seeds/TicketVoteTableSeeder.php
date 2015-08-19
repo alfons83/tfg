@@ -13,7 +13,6 @@ class TicketVoteTableSeeder extends Seeder
     {
         DB::table('ticket_votes');
 
-       // App\TicketVote::truncate();
 
         factory(App\TicketVote::class, 50)->create();
     }

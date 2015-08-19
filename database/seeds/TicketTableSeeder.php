@@ -13,7 +13,6 @@ class TicketTableSeeder extends Seeder
     {
         DB::table('tickets');
 
-       // App\Ticket::truncate();
 
         factory(App\Ticket::class, 50)->create();
     }

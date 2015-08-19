@@ -13,7 +13,6 @@ class CategoryTableSeeder extends Seeder
     {
         DB::table('categories');
 
-   //     App\Category::truncate();
 
         factory(App\Category::class, 50)->create();
     }

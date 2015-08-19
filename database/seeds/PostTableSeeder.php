@@ -15,7 +15,7 @@ class PostTableSeeder extends Seeder
 
         DB::table('posts');
 
-      //  App\Post::truncate();
+
 
         factory(App\Post::class, 50)->create();
     }

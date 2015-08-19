@@ -22,7 +22,7 @@ class Post extends Model
     protected $fillable = ['title', 'body','slug' ,'active'];
 
     protected $dates = ['published_at'];
-/*
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
@@ -31,5 +31,5 @@ class Post extends Model
             $this->attributes['slug'] = str_slug($value);
         }
     }
-*/
+
 }

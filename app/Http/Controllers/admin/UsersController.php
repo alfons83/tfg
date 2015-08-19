@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\User;
+use App\User as user;
 
 use Illuminate\Http\Request;
 
@@ -106,7 +106,7 @@ class UsersController extends Controller
 
     {
         $user = User::findOrFail($id);
-        
+
         $user->delete();
 
         $message = $user->name . ' fue eliminado de nuestros registros';

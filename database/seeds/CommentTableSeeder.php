@@ -13,7 +13,7 @@ class CommentTableSeeder extends Seeder
     {
         DB::table('comments');
 
-        //App\Comment::truncate();
+
 
         factory(App\Comment::class, 50)->create();
     }

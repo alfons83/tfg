@@ -32,6 +32,14 @@ Route::get('logout', [
     'as'   => 'logout'
 ]);
 
+Route::get('blog/post/{slug}',[
+
+    'uses' => 'Blog\BlogController@show',
+    'as'   => 'post'
+]);
+
+Route::get('blog/posts', 'Blog\BlogController@index');
+
 // Registration routes ...
 
 Route::get('register',[
@@ -48,16 +56,7 @@ Route::get('confirmation/{token}', [
 ]);
 
 
-//  Slug Routes
 
-
-Route::get('blog/post/{slug}',[
-
-    'uses' => 'Blog\PostController@show',
-    'as'   => 'post'
-]);
-
-Route::get('blog/posts', 'Blog\PostController@index');
 
 //  Password reset ink request routes ...
 
@@ -96,15 +95,128 @@ Route::group(['middleware' => 'auth'], function () {
             return view('admin/settings');
         });
 
-/*
-        Route::get('admin/users/{users}',  [
 
-            'uses' => 'admin\UsersController@index',
-            'as'   => 'admin.users.index'
+        // Admin Post Routes
 
+
+        Route::get('admin/post', [
+            'uses' => 'admin\PostController@index' ,
+            'as'   =>  'admin.post.index'
         ]);
 
-*/
+        Route::get('admin/post/create', [
+            'uses' => 'admin\PostController@create' ,
+            'as'   =>  'admin.post.create'
+        ]);
+
+        Route::post('admin/post', [
+            'uses' => 'admin\PostController@store' ,
+            'as'   =>  'admin.post.store'
+        ]);
+
+        Route::get('admin/post/{post}', [
+            'uses' => 'admin\PostController@show' ,
+            'as'   =>  'admin.post.show'
+        ]);
+
+        Route::get('admin/post/{post}/edit', [
+            'uses' => 'admin\PostController@edit' ,
+            'as'   =>  'admin.post.edit'
+        ]);
+
+        Route::put('admin/post/{post}', [
+            'uses' => 'admin\PostController@update' ,
+            'as'   =>  'admin.post.update'
+        ]);
+
+
+        Route::delete('admin/post/{post}', [
+            'uses' => 'admin\PostController@destroy' ,
+            'as'   =>  'admin.post.destroy'
+        ]);
+
+
+        // Admin Category Routes
+
+
+        Route::get('admin/category', [
+            'uses' => 'admin\CategoryController@index' ,
+            'as'   =>  'admin.category.index'
+        ]);
+
+        Route::get('admin/category/create', [
+            'uses' => 'admin\CategoryController@create' ,
+            'as'   =>  'admin.category.create'
+        ]);
+
+        Route::post('admin/category', [
+            'uses' => 'admin\CategoryController@store' ,
+            'as'   =>  'admin.category.store'
+        ]);
+
+        Route::get('admin/category/{category}', [
+            'uses' => 'admin\CategoryController@show' ,
+            'as'   =>  'admin.category.show'
+        ]);
+
+        Route::get('admin/category/{category}/edit', [
+            'uses' => 'admin\CategoryController@edit' ,
+            'as'   =>  'admin.category.edit'
+        ]);
+
+        Route::put('admin/category/{category}', [
+            'uses' => 'admin\CategoryController@update' ,
+            'as'   =>  'admin.category.update'
+        ]);
+
+
+        Route::delete('admin/category/{category}', [
+            'uses' => 'admin\CategoryController@destroy' ,
+            'as'   =>  'admin.category.destroy'
+        ]);
+
+        // Admin Tag Routes
+
+
+        Route::get('admin/tag', [
+            'uses' => 'admin\TagController@index' ,
+            'as'   =>  'admin.tag.index'
+        ]);
+
+        Route::get('admin/tag/create', [
+            'uses' => 'admin\TagController@create' ,
+            'as'   =>  'admin.tag.create'
+        ]);
+
+        Route::post('admin/tag', [
+            'uses' => 'admin\TagController@store' ,
+            'as'   =>  'admin.tag.store'
+        ]);
+
+        Route::get('admin/tag/{tag}', [
+            'uses' => 'admin\TagController@show' ,
+            'as'   =>  'admin.tag.show'
+        ]);
+
+        Route::get('admin/tag/{tag}/edit', [
+            'uses' => 'admin\TagController@edit' ,
+            'as'   =>  'admin.tag.edit'
+        ]);
+
+        Route::put('admin/tag/{tag}', [
+            'uses' => 'admin\TagController@update' ,
+            'as'   =>  'admin.tag.update'
+        ]);
+
+
+        Route::delete('admin/tag/{tag}', [
+            'uses' => 'admin\TagController@destroy' ,
+            'as'   =>  'admin.tag.destroy'
+        ]);
+
+
+        // Admin Users Routes
+
         Route::get('admin/users', [
             'uses' => 'admin\UsersController@index' ,
             'as'   =>  'admin.users.index'
@@ -141,29 +253,7 @@ Route::group(['middleware' => 'auth'], function () {
             'as'   =>  'admin.users.destroy'
         ]);
 
-        //Route::post('admin/users', 'admin\UsersController@store');
 
-       // Route::put('admin/users/{users}' , 'admin\UsersController@update');
-
-       // Route::delete('admin/users/{users}' , 'admin\UsersController@destroy');
-
-       // Route::get('admin/users', 'admin\UsersController@index');
-
-
-       // Route::get('admin/users/create', 'admin\UsersController@create');
-
-
-
-       // Route::get('admin/users/{users}' , 'admin\UsersController@show');
-
-       // Route::get('admin/users/{users}/edit' , 'admin\UsersController@edit');
-
-
-
-
-        Route::get('admin/pagination', function () {
-            return view('admin/pagination');
-        });
 
     });
 

@@ -14,10 +14,7 @@ class TagTableSeeder extends Seeder
 
         DB::table('tags');
 
-       // App\Tag::truncate();
 
-
-        //DB::table('tags')->truncate();
 
         factory(App\Tag::class, 50)->create();
 
