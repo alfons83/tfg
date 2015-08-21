@@ -255,6 +255,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
+
+
+
     });
 
     Route::group(['middleware' => 'role:editor'], function () {

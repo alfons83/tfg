@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Usuarios</div>
+                    <div class="panel-heading">Categorias</div>
 
                     @if(Session::has('message'))
 
@@ -16,43 +16,42 @@
                     <div class="panel-body">
 
                         <p>
-                            <a class="btn btn-info" href="{{ route('admin.users.create') }}" role="button">
-                                Nuevo usuario
+                            <a class="btn btn-info" href="{{ route('admin.category.create') }}" role="button">
+                                Nueva Categoria
                             </a>
                         </p>
 
-                        <p>Hay {{ $users->total() }} usuarios </p>
+                        <p>Hay {{ $categories->total() }} Categorias </p>
                         <table class="table table-striped">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Rol</th>
-                                <th>Activo</th>
+                                <th>Descripciones</th>
+                                <th>Post_Id</th>
                                 <th>Acciones</th>
                             </tr>
-                            @foreach ($users as $user)
-                                <tr data-id="{{ $user->id }}">
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td>{{ $user->active }}</td>
+                            @foreach ($categories as $category)
+                                <tr data-id="{{ $category->id }}">
+                                    <td>{{ $category->id }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->description }}</td>
+                                    <td>{{ $category->post_id }}</td>
+
                                     <td>
-                                        <a href="{{ route ('admin.users.edit', $user->id) }}">Editar</a>
-                                        <a href="{{ route ('admin.users.destroy', $user->id) }}" class="btn-delete">Eliminar</a>
+                                        <a class="btn btn-primary btn-xs" href="{{ route ('admin.category.edit', $category->id) }}">Editar</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ route ('admin.category.destroy', $category->id) }}" class="btn-delete">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
-                        {!!  $users->render() !!}
+                        {!! $categories->render() !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    {!!   Form::open(['route'=>['admin.users.destroy',':USER_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
+    {!!   Form::open(['route'=>['admin.category.destroy',':CATEGORY_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
 
 
 
@@ -72,7 +71,7 @@
                 var row = $(this).parents('tr');
                 var id = row.data('id');
                 var form = $('#form-delete');
-                var url = form.attr('action').replace(':USER_ID', id);
+                var url = form.attr('action').replace(':CATEGORY_ID', id);
                 var data = form.serialize();
 
                 row.fadeOut();

@@ -19,9 +19,21 @@ class Post extends Model
      * @var array
      */
 
-    protected $fillable = ['title', 'body','slug' ,'active'];
+    protected $fillable = ['title', 'content','slug' ,'active', 'user_id'];
 
     protected $dates = ['published_at'];
+
+    /**
+     * The many-to-many relationship between posts and tags.
+     *
+     * @return BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'tags');
+    }
+
+
 
     public function setTitleAttribute($value)
     {

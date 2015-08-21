@@ -18,7 +18,7 @@ class CreateTicketsTable extends Migration
 
             $table->string('title',200);
 
-            $table->enum('status',['open','closed']);
+            $table->enum('status',['Accepted','Waiting','Draft','Rejected']);
 
             $table->integer('user_id')->unsigned();
 

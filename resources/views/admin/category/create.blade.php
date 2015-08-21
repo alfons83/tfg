@@ -5,20 +5,20 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Nuevo Usuario</div>
+                    <div class="panel-heading">Nueva Categoria</div>
                     <div class="panel-body">
 
-                        {!! Form::open(['route' => 'admin.users.store' , 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'admin.category.store' , 'method' => 'POST']) !!}
 
                         {!! Field::text('name') !!}
 
-                        {!! Field::email('email') !!}
+                        {!! Field::text('description') !!}
 
-                        {!! Field::password('password') !!}
+                        {!! Field::number('post_id') !!}
 
-                        {!! Field::password('password_confirmation') !!}
 
-                        {!! Form::submit('Send', ['class' => 'btn btn-success']) !!}
+
+                        {!! Form::submit('Crear', ['class' => 'btn btn-success']) !!}
 
                         {!! Form::close() !!}
 

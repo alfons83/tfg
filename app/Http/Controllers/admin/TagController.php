@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\admin;
 
+
+use App\Tag;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class TagController extends Controller
 {
@@ -16,7 +22,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate();
+        return view('admin.tag.index', compact('tags'));
     }
 
     /**
@@ -26,7 +33,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tag.create');
     }
 
     /**
@@ -35,10 +42,12 @@ class TagController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Redirector $redirect)
     {
-        //
+        $tag = Tag::create($request->all());
+        return redirect()->route('admin.tag.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -48,7 +57,8 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        dd(Tag::findOrFail($id));
+
     }
 
     /**
@@ -59,7 +69,9 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+        return view('admin.tag.edit', compact('tag'));
+
     }
 
     /**
@@ -69,9 +81,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update( Request $request ,$id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $tag->fill($request->all());
+        $tag->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -80,8 +97,23 @@ class TagController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
+
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $tag->delete();
+
+        $message = $tag->name . ' fue eliminado de nuestros registros';
+
+        if ($request->ajax()) {
+            return response()->json([
+                'id'      => $tag->id,
+                'message' => $message
+            ]);
+        }
+
+        Session::flash('message', $message);
+        return redirect()->route('admin.tag.index');
     }
 }

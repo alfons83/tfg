@@ -50,7 +50,7 @@ class UsersController extends Controller
      */
     public function store(Request $request, Redirector $redirect)
     {
-        $user = User::create(Request::all());
+        $user = User::create($request->all());
         return redirect()->route('admin.users.index');
     }
 

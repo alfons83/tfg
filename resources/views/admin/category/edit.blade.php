@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Editar Usuario: {{ $user->name }} </div>
+                    <div class="panel-heading">Editar Categoría: {{ $category->name }} </div>
                     <div class="panel-body">
 
                         @if(Session::has('message'))
@@ -14,25 +14,25 @@
 
                         @endif
 
-                        {!! Form::Model($user, ['route' => ['admin.users.update', $user->id], 'method' => 'PUT']) !!}
+                        {!! Form::Model($category, ['route' => ['admin.category.update', $category->id], 'method' => 'PUT']) !!}
 
                         {!! Field::text('name') !!}
 
-                        {!! Field::email('email') !!}
+                        {!! Field::text('description') !!}
 
-                        {!! Field::password('password') !!}
+                        {!! Field::number('post_id') !!}
 
-                        {!! Field::password('password_confirmation') !!}
 
-                        <button type="submit" class="btn btn-default">Actualizar usuario</button>
+                        <button type="submit" class="btn btn-default">Actualizar Categoria</button>
 
                         {!! Form::Close() !!}
 
-                            {!!   Form::open(['route'=>['admin.users.destroy',$user], 'method' => 'DELETE']) !!}
 
-                            <button type="submit" class="btn btn-danger ">Eliminar</button>
+                        {!!   Form::open(['route'=>['admin.category.destroy',$category], 'method' => 'DELETE']) !!}
 
-                            {!! Form::close()  !!}
+                        <button type="submit" class="btn btn-danger ">Eliminar</button>
+
+                        {!! Form::close()  !!}
 
                     </div>
 

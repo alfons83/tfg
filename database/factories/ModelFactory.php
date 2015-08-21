@@ -84,7 +84,7 @@ $factory->define(App\Ticket::class, function ($faker) {
 
     return [
         'title' => $faker->sentence(mt_rand(3,10)),
-        'status' => $faker->randomElement(['open','closed']),
+        'status' => $faker->randomElement(['Accepted','Waiting','Draft','Rejected']),
         'user_id' =>$faker->randomDigitNotNull
 
     ];

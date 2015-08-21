@@ -21,13 +21,15 @@
                             </a>
                         </p>
 
+
+
                         <p>Hay {{ $users->total() }} usuarios </p>
                         <table class="table table-striped">
                             <tr>
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
-                                <th>Rol</th>
+                                <th>Tipo</th>
                                 <th>Activo</th>
                                 <th>Acciones</th>
                             </tr>
@@ -39,8 +41,8 @@
                                     <td>{{ $user->role }}</td>
                                     <td>{{ $user->active }}</td>
                                     <td>
-                                        <a href="{{ route ('admin.users.edit', $user->id) }}">Editar</a>
-                                        <a href="{{ route ('admin.users.destroy', $user->id) }}" class="btn-delete">Eliminar</a>
+                                        <a class="btn btn-primary btn-xs"  href="{{ route ('admin.users.edit', $user->id) }}">Editar</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ route ('admin.users.destroy', $user->id) }}" class="btn-delete">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach

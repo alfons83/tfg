@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Category;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -16,7 +21,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate();
+
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -26,7 +33,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -35,9 +42,10 @@ class CategoryController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Redirector $redirect)
     {
-        //
+        $category = Category::create($request->all());
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -48,7 +56,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        dd(Category::findOrFail($id));
     }
 
     /**
@@ -59,7 +67,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -71,7 +81,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findorFail($id);
+
+        $category->fill($request->all());
+        $category->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -80,8 +95,22 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        $category->delete();
+
+        $message = $category->name . ' fue eliminada de nuestros registros';
+
+        if ($request->ajax()) {
+            return response()->json([
+                'id'      => $category->id,
+                'message' => $message
+            ]);
+        }
+
+        Session::flash('message', $message);
+        return redirect()->route('admin.category.index');
     }
 }
