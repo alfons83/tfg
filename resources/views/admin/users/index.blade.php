@@ -21,7 +21,7 @@
                             </a>
                         </p>
 
-
+@include('admin.users.partials.table')
 
                         <p>Hay {{ $users->total() }} usuarios </p>
                         <table class="table table-striped">

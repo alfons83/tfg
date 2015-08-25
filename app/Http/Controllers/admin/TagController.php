@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 
-use App\Tag;
+use App\Models\blog\Tag;
 
 use Illuminate\Http\Request;
 

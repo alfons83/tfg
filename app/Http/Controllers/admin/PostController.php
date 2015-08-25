@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-use App\Post as Post;
+use App\Models\blog\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;

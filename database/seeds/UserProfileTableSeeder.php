@@ -14,6 +14,6 @@ class UserProfileTableSeeder extends Seeder
         DB::table('user_profiles');
 
 
-        factory(App\User_profile::class, 50)->create();
+        factory(App\Models\User_profile::class, 50)->create();
     }
 }

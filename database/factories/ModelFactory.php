@@ -13,29 +13,34 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+$factory->define(App\Models\User::class, function ($faker) {
     return [
-        'name' => $faker->name,
+
+        'username' => $faker->userName,
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
         'email' => $faker->unique()->email,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
-        'role' => $faker->randomElement(['user','editor']),
+        'type' => $faker->randomElement(['user','expert']),
+        'gender' => $faker->randomElement(['male','female']),
         'active' => $faker->boolean
 
     ];
 });
 
-$factory->define(App\User_profile::class, function ($faker) {
+$factory->define(App\Models\User_profile::class, function ($faker) {
 
     return [
-        'bio' => $faker->sentence(),
-        'twitter' => $faker->userName,
-        'website' =>$faker->domainName,
+        'bio' => $faker->paragraph(rand(2,5)),
+        'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'twitter' => 'http://wwww.twitter.com/'.$faker->userName,
+        'website' =>'http://www.'.$faker->domainName,
         'user_id' =>$faker->randomDigitNotNull
     ];
 });
 
-$factory->define(App\Tag::class, function ($faker) {
+$factory->define(App\Models\blog\Tag::class, function ($faker) {
     return [
         'name' => $faker->word,
         'description' => $faker->text,
@@ -43,7 +48,7 @@ $factory->define(App\Tag::class, function ($faker) {
     ];
 });
 
-$factory->define(App\Post::class, function ($faker) {
+$factory->define(App\Models\blog\Post::class, function ($faker) {
 
     $title = $faker->sentence(mt_rand(3,10));
     $slug  = Str::slug($title);
@@ -58,7 +63,7 @@ $factory->define(App\Post::class, function ($faker) {
     ];
 });
 
-$factory->define(App\Category::class, function ($faker) {
+$factory->define(App\Models\blog\Category::class, function ($faker) {
 
     return [
         'name' => $faker->word,
@@ -68,7 +73,7 @@ $factory->define(App\Category::class, function ($faker) {
 
 });
 
-$factory->define(App\Comment::class, function ($faker) {
+$factory->define(App\Models\blog\Comment::class, function ($faker) {
 
     return [
         'comment' => $faker->text,
@@ -80,23 +85,60 @@ $factory->define(App\Comment::class, function ($faker) {
 
 });
 
-$factory->define(App\Ticket::class, function ($faker) {
+$factory->define(App\Models\patterns\Pattern::class, function ($faker) {
+
+    $title = $faker->sentence(mt_rand(3,10));
+    $slug  = Str::slug($title);
 
     return [
-        'title' => $faker->sentence(mt_rand(3,10)),
-        'status' => $faker->randomElement(['Accepted','Waiting','Draft','Rejected']),
-        'user_id' =>$faker->randomDigitNotNull
+        'title'  => $title,
+        'content'   => join("n\n", $faker->paragraphs(mt_rand(3,6))),
+        'slug' => $slug,
+        'status' => $faker->randomElement(['Open','Pending','Resolved','Closed']),
+        'user_id' =>$faker->randomDigitNotNull,
+        'active' => $faker->boolean,
+        'published_at' => $faker->dateTimeBetween('-1 month','+3 days')
+    ];
+
+});
+
+$factory->define(App\Models\patterns\Vote::class, function ($faker) {
+
+    return [
+
+        'user_id' =>$faker->randomDigitNotNull,
+        'pattern_id' =>$faker->randomDigitNotNull
 
     ];
 
 });
 
-$factory->define(App\TicketVote::class, function ($faker) {
+$factory->define(App\Models\patterns\Tag::class, function ($faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->text,
+        'pattern_id' =>$faker->randomDigitNotNull
+    ];
+});
+
+
+$factory->define(App\Models\patterns\Category::class, function ($faker) {
 
     return [
+        'name' => $faker->word,
+        'description' => $faker->text,
+        'pattern_id' =>$faker->randomDigitNotNull
+    ];
 
+});
+
+$factory->define(App\Models\patterns\Comment::class, function ($faker) {
+
+    return [
+        'comment' => $faker->text,
+        'active' => $faker->boolean,
         'user_id' =>$faker->randomDigitNotNull,
-        'ticket_id' =>$faker->randomDigitNotNull
+        'pattern_id' =>$faker->randomDigitNotNull
 
     ];
 

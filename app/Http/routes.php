@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
 
-    Route::group(['middleware' => 'role:admin'], function () {
+    Route::group(['middleware' => 'type:admin'], function () {
 
         Route::get('admin/settings', function () {
             return view('admin/settings');
@@ -217,7 +217,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Admin Users Routes
 
-        Route::get('admin/users', [
+        Route::resource("admin/users", "admin\\UsersController");
+
+        /*Route::get('admin/users', [
             'uses' => 'admin\UsersController@index' ,
             'as'   =>  'admin.users.index'
         ]);
@@ -251,7 +253,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('admin/users/{users}', [
             'uses' => 'admin\UsersController@destroy' ,
             'as'   =>  'admin.users.destroy'
-        ]);
+        ]);*/
+
+
 
 
 
@@ -260,7 +264,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
 
-    Route::group(['middleware' => 'role:editor'], function () {
+
+
+    Route::group(['middleware' => 'type:editor'], function () {
 
 
         Route::get('admin/posts', function () {
@@ -270,4 +276,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
+});
+
+Route::resource("admin/users", "admin\\UsersController");
+
+Route::get("pruebas", function() {
+    return view("pruebas");
 });

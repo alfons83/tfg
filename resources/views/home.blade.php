@@ -12,6 +12,7 @@
                     <div class="panel-body">
                         <h1>Laravel 5</h1>
                         <p>Welcome to our site!</p>
+                        $author= author::
                     </div>
                 </div>
             </div>

@@ -1,9 +1,6 @@
 <?php
-/*
-use App\Category;
-use App\Comment;
-use App\Ticket;
-*/
+
+
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,13 +16,16 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
             $this->call(UserTableSeeder::class);
-            $this->call(PostTableSeeder::class);
-            $this->call(TagTableSeeder::class);
+            $this->call(BlogPostTableSeeder::class);
+            $this->call(BlogTagTableSeeder::class);
+            $this->call(PatternTableSeeder::class);
+            $this->call(PatternTagTableSeeder::class);
             $this->call(UserProfileTableSeeder::class);
-            $this->call(CategoryTableSeeder::class);
-            $this->call(CommentTableSeeder::class);
-            $this->call(TicketTableSeeder::class);
-            $this->call(TicketVoteTableSeeder::class);
+            $this->call(BlogCategoryTableSeeder::class);
+            $this->call(BlogCommentTableSeeder::class);
+            $this->call(PatternCategoryTableSeeder::class);
+            $this->call(PatternCommentTableSeeder::class);
+            $this->call(PatternVoteTableSeeder::class);
 
 
         Model::reguard();
