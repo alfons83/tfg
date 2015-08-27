@@ -26,4 +26,22 @@ class Tag extends Model
      * @var array
      *
      */
+
+    public function posts()
+    {
+        return $this->belongsToMany('App\Models\blog\Post', 'blog_post');
+    }
+
+    /**
+     * Return the index layout to use for a tag
+     *
+     * @param string $tag
+     * @param string $default
+     * @return string
+     */
+    public static function layout($tag, $default = 'blog.index')
+    {
+        $layout = static::whereTag($tag)->pluck('layout');
+        return $layout ?: $default;
+    }
 }

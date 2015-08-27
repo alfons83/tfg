@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use Validator;
@@ -49,7 +49,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'username' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -64,18 +64,18 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $user = new User([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        $user->role = 'user';
+        $user->type = 'user';
         $user->registration_token = str_random(40);
         $user->save();
 
         $url = route('confirmation', ['token' => $user->registration_token]);
 
         Mail::send('emails/registration', compact('user', 'url'), function ($m) use ($user) {
-            $m->to($user->email, $user->name)->subject('Activa tu cuenta!');
+            $m->to($user->email, $user->username)->subject('Activa tu cuenta!');
         });
 
         return $user;

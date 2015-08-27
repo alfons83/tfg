@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.dashboard')
 
 @section('content')
     <div class="container">
@@ -34,9 +34,9 @@
                             @foreach ($users as $user)
                                 <tr data-id="{{ $user->id }}">
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
+                                    <td>{{ $user->type }}</td>
                                     <td>{{ $user->active }}</td>
                                     <td>
                                         <a href="{{ route ('admin.users.edit', $user->id) }}">Editar</a>

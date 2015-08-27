@@ -9,6 +9,7 @@
             color: orange !important;
         }
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset("css/angular-toastr.min.css")}}">
 
 
@@ -23,30 +24,32 @@
 
                 Buscar: <input type="text" ng-model="searchUser">
 
-                <table>
+                <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NOMBRE</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
                         <th>EMAIL</th>
+                        <th>TIPO</th>
+                        <th>ACTIVO</th>
                         <th>ACCIONES</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="user in users | filter:searchUser">
                         <td>[[user.id]]</td>
-                        <td>[[user.name]]</td>
+                        <td>[[user.first_name]]</td>
+                        <td>[[user.last_name]]</td>
                         <td>[[user.email]]</td>
+                        <td>[[user.type]]</td>
+                        <td>[[user.active]]</td>
                         <td>
-                            <button ng-click="delete(user.id)">Eliminar</button>
+                            <button type="button" class="btn btn-danger" ng-click="delete(user.id)">Eliminar</button>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-
-                <ul>
-                    <li ng-repeat="user in users | filter:searchUser">[[user.name]] ([[user.email]])</li>
-                </ul>
             </div>
         </div>
     </div>

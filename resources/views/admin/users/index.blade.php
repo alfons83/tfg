@@ -1,7 +1,6 @@
-@extends('layout')
-
+@extends('admin.dashboard')
 @section('content')
-    <div class="container">
+<div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
@@ -21,7 +20,7 @@
                             </a>
                         </p>
 
-@include('admin.users.partials.table')
+{{--@include('admin.users.partials.table')--}}
 
                         <p>Hay {{ $users->total() }} usuarios </p>
                         <table class="table table-striped">
@@ -36,9 +35,9 @@
                             @foreach ($users as $user)
                                 <tr data-id="{{ $user->id }}">
                                     <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
+                                    <td>{{ $user->type }}</td>
                                     <td>{{ $user->active }}</td>
                                     <td>
                                         <a class="btn btn-primary btn-xs"  href="{{ route ('admin.users.edit', $user->id) }}">Editar</a>
@@ -61,8 +60,6 @@
     {!! Form::close()  !!}
 
 @endsection
-
-
 
 @section('scripts')
     <script>

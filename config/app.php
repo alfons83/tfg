@@ -137,6 +137,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Styde\Html\HtmlServiceProvider::class,
+        'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 
         /*
@@ -195,6 +196,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
 
 
     ],

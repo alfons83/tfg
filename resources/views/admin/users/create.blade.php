@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.dashboard')
 
 @section('content')
     <div class="container">
@@ -10,7 +10,7 @@
 
                         {!! Form::open(['route' => 'admin.users.store' , 'method' => 'POST']) !!}
 
-                        {!! Field::text('name') !!}
+                        {!! Field::text('username') !!}
 
                         {!! Field::email('email') !!}
 

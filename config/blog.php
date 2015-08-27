@@ -2,6 +2,6 @@
 
 return [
 
-    'title' => 'My Blog',
+    'title' => 'Pattern Blog',
     'posts_per_page'  => 5
 ];
