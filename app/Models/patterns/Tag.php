@@ -26,4 +26,10 @@ class Tag extends Model
      * @var array
      *
      */
+
+   /* public function patterns()
+    {
+
+        return $this->belongsToMany('App\Models\patterns\Pattern' ,'patterns');
+    }*/
 }

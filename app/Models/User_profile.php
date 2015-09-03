@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class User_profile extends Model
 {
     /**
@@ -31,7 +32,7 @@ class User_profile extends Model
     protected $hidden = [];
 
 
-    public function getAgeAttribute($birthdate)
+    public function getAgeAttribute()
     {
         return \Carbon\Carbon::parse($this->birthdate)->age;
     }

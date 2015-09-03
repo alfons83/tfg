@@ -45,48 +45,72 @@ class Post extends Model
         return $this->hasMany('App\Models\blog\Comment');
     }
 
-
-// /*   /**
-//     * Set the title attribute and automatically the slug
-//     *
-//     * @param string $value
-//     */
-//    public function setTitleAttribute($value)
-//    {
-//        $this->attributes['title'] = $value;
-//
-//        if (! $this->exists) {
-//            $this->setUniqueSlug($value, '');
-//        }
-//    }
-
-    public function setTitleAttribute($value)
+    public function count(Request $request)
     {
-        $this->attributes['title'] = ucfirst($value);
+        return Post::count($request['id']);
+    }
+    public function latest(Request $request)
+    {
+        return Post::latest($request);
+    }
 
-        if( ! $this->slug)
-        {
-            $this->attributes['slug'] = Str::slug($value);
+    public function random()
+    {
+        return Post::random();
+    }
+
+
+
+   /**
+   * Set the title attribute and automatically the slug
+    *
+   * @param string $value
+   */
+   public function setTitleAttribute($value)
+    {
+       $this->attributes['title'] = $value;
+
+        if (! $this->exists) {
+           $this->setUniqueSlug($value, '');
         }
     }
 
-//    /**
-//     * Recursive routine to set a unique slug
-//     *
-//     * @param string $title
-//     * @param mixed $extra
-//     */
-//    protected function setUniqueSlug($title, $extra)
-//    {
-//        $slug = str_slug($title.'-'.$extra);
-//
-//        if (static::whereSlug($slug)->exists()) {
-//            $this->setUniqueSlug($title, $extra + 1);
-//            return;
-//        }
-//
-//        $this->attributes['slug'] = $slug;
-//    }
+
+
+   /**
+     * Recursive routine to set a unique slug
+     *
+     * @param string $title
+     * @param mixed $extra
+    */
+    protected function setUniqueSlug($title, $extra)
+   {
+       $slug = str_slug($title.'-'.$extra);
+
+        if (static::whereSlug($slug)->exists()) {
+           $this->setUniqueSlug($title, $extra + 1);
+            return;
+       }
+
+        $this->attributes['slug'] = $slug;
+    }
+
+    /**
+     *
+     * Sync tag relation adding new tags as needed
+     *
+     * @param array $tags
+     *
+     */
+
+    public function syncTags(array $tags)
+    {
+
+    }
+
+
+
+
 
     /**
      * Return URL to post

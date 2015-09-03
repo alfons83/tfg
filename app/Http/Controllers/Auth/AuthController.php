@@ -50,6 +50,8 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'username' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -65,10 +67,14 @@ class AuthController extends Controller
     {
         $user = new User([
             'username' => $data['username'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
         $user->type = 'user';
+        $user->active= true;
         $user->registration_token = str_random(40);
         $user->save();
 
@@ -98,7 +104,7 @@ class AuthController extends Controller
      */
     public function redirectPath()
     {
-        return route('home');
+        return url('home');
     }
 
     /**

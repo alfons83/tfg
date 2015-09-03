@@ -2,12 +2,14 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+
 
 class Type
 {
     protected $hierarchy = [
         'admin' => 3,
-        'editor' => 2,
+        'expert' => 2,
         'user' => 1
     ];
 
@@ -20,10 +22,14 @@ class Type
      */
     public function handle($request, Closure $next, $type)
     {
+
         $user = auth()->user();
+
+
         if ($this->hierarchy[$user->type] < $this->hierarchy[$type]) {
             abort(404);
         }
+
         return $next($request);
     }
 }

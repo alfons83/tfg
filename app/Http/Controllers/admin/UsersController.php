@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Models\patterns\Pattern;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -15,8 +16,6 @@ use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
-
-
 
     /**
      * Display a listing of the resource.
@@ -66,7 +65,12 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        dd(User::findOrFail($id));
+        $user = User::findOrFail($id);
+
+        if($user)
+            return view('admin.users.view', compact('user'));
+        else
+            return redirect()->route('admin.users.index');
     }
 
     /**
@@ -124,6 +128,18 @@ class UsersController extends Controller
 
         Session::flash('message', $message);
         return redirect()->route('admin.users.index');
+    }
+
+    public function getFavorites($user_id)
+    {
+        $pattern = Pattern::findAllFavorites($user_id);
+
+        return view('admin.users.favorites', compact('pattern'));
+    }
+
+    public function profile()
+    {
+        return view('admin.users.profile');
     }
 
 }

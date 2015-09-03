@@ -1,56 +1,87 @@
-@extends('admin.dashboard')
+@extends('admin._includes.layout')
 @section('content')
-<div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Usuarios</div>
+    <div class="row">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Users</h3>
 
-                    @if(Session::has('message'))
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-footer clearfix">
+                <a href="{{route('admin.users.create')}}" class="btn btn-sm btn-info btn-flat pull-right"> New User</a>
+            </div>
+            <!-- /.box-footer -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Email</th>
+                            <th>Tipo</th>
+                            <th>Activo</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($users as $user)
+                            <tr data-id="{{ $user->id }}">
+                                <td>{{ $user->id }}</td>
+                                <td>
+                                    <a href="{{route('admin.users.show', ['users' => $user->id])}}">{{ $user->username }}</a>
+                                </td>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->last_name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->type }}</td>
 
-                        <p class="alert alert-success">{{ Session::get('message') }}</p>
+                                @if ($user->active === 1)
 
-                    @endif
+                                <td><span class="label label-info">Si</span></td>
+                                @else
 
-                    <div class="panel-body">
+                                    <td><span class="label label-default">No</span></td>
 
-                        <p>
-                            <a class="btn btn-info" href="{{ route('admin.users.create') }}" role="button">
-                                Nuevo usuario
-                            </a>
-                        </p>
+                                @endif
 
-{{--@include('admin.users.partials.table')--}}
 
-                        <p>Hay {{ $users->total() }} usuarios </p>
-                        <table class="table table-striped">
-                            <tr>
-                                <th>#</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Tipo</th>
-                                <th>Activo</th>
-                                <th>Acciones</th>
+
+
+
+
+
+                                <td>
+                                    <a class="btn btn-success btn-xs"
+                                       href="{{ route ('admin.users.show', $user->id) }}"><i
+                                                class="fa fa-info-circle"></i></a>
+                                    <a class="btn btn-primary btn-xs"
+                                       href="{{ route ('admin.users.edit', $user->id) }}"><i
+                                                class="fa fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-danger btn-xs"
+                                       href="{{ route ('admin.users.destroy', $user->id) }}" class="btn-delete"><i
+                                                class="fa fa-trash-o"></i></a>
+                                </td>
                             </tr>
-                            @foreach ($users as $user)
-                                <tr data-id="{{ $user->id }}">
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->type }}</td>
-                                    <td>{{ $user->active }}</td>
-                                    <td>
-                                        <a class="btn btn-primary btn-xs"  href="{{ route ('admin.users.edit', $user->id) }}">Editar</a>
-                                        <a class="btn btn-danger btn-xs" href="{{ route ('admin.users.destroy', $user->id) }}" class="btn-delete">Eliminar</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </table>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <div class=" pull-right">
                         {!!  $users->render() !!}
                     </div>
                 </div>
+                <!-- /.table-responsive -->
             </div>
+            <!-- /.box-body -->
+
         </div>
+        <!-- /.box -->
+
     </div>
 
     {!!   Form::open(['route'=>['admin.users.destroy',':USER_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}

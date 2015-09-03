@@ -136,8 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Styde\Html\HtmlServiceProvider::class,
-        'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+
 
 
         /*
@@ -146,6 +145,10 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        Styde\Html\HtmlServiceProvider::class,
+        'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+        'AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider',
 
 
     ],
@@ -197,6 +200,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
+        'OAuth' => 'AdamWathan\EloquentOAuth\Facades\OAuth',
+        'Gate' => Illuminate\Support\Facades\Gate::class,
 
 
     ],

@@ -28,4 +28,10 @@ class Category extends Model
      *
     protected $hidden = ['password', 'remember_token'];
      */
+
+    /*public function patterns()
+    {
+
+        return $this->belongsToMany('App\Models\patterns\Pattern','patterns');
+    }*/
 }

@@ -33,26 +33,60 @@ class Pattern extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('App\Models\pattern\Tag', 'tags');
+        return $this->hasMany('App\Models\patterns\Tag');
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\patterns\Category',  'id', 'pattern_id');
+    }
+
+    public function categorys()
+    {
+        return $this->hasMany('App\Models\patterns\Category', 'pattern_id');
+    }
+
+    public function cate()
+    {
+        return $this->hasOne('App\Models\patterns\Category');
+    }
+
 
     public function author()
     {
-        return $this->hasOne('App\Models\User' , 'id');
+        return $this->belongsTo('App\Models\User','user_id');
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Models\pattern\Comment');
+        return $this->hasMany('App\Models\patterns\Comment');
     }
 
-    public function votes()
+    public function voters()
     {
-        return $this->belongsToMany('App\Models\User','patterns_votes');
+        return $this->belongsToMany('App\Models\User','pattern_votes')->withTimestamps();
     }
 
-    public function getOpenAttribute()
+
+    public function count(Request $request)
     {
-        return $this->status == 'open';
+        return Pattern::count($request['id']);
     }
+
+    public function favourites()
+    {
+        return $this->belongsToMany('App\Models\patterns\patterns', 'pattern_votes','pattern_id', 'user_id');
+    }
+
+    public function addFavourites($pattern)
+    {
+        $this->favourites()->attach($pattern->id);
+    }
+
+    public function removeFavourites($pattern)
+    {
+        $this->favourites()->detach($pattern->id);
+    }
+
+
 }

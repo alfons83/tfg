@@ -1,56 +1,51 @@
-@extends('layout')
-
+@extends('auth.layout')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">@lang('auth.register_title')</div>
-                    <div class="panel-body">
-                        @include('partials/errors')
-
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('validation.attributes.username')</label>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" name="username" value="{{ old('username') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('validation.attributes.email')</label>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('validation.attributes.password')</label>
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('validation.attributes.password_confirmation')</label>
-                                <div class="col-md-6">
-                                    <input type="password" class="form-control" name="password_confirmation">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        @lang('auth.register_button')
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="register-box">
+    <div class="register-logo">
+        <a href="{{url('http://laravel.app/')}}"><b>Admin</b>LTE</a>
     </div>
+
+    <div class="register-box-body">
+        <p class="login-box-msg">Register a new membership</p>
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" name="username" placeholder="Full name">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" name="email" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password_confirmation" class="form-control" name="password_confirmation" placeholder="Retype password">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> I agree to the <a href="#">terms</a>
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                </div><!-- /.col -->
+            </div>
+        </form>
+
+        <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="{{url('http://laravel.app/facebook/authorize')}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
+            <a href="{{url('http://laravel.app/github/authorize')}}" class="btn btn-block btn-social btn-github btn-flat"><i class="fa fa-github-plus"></i> Sign up using Github</a>
+        </div>
+
+        <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+    </div><!-- /.form-box -->
+</div><!-- /.register-box -->
 @endsection

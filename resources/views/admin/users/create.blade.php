@@ -1,5 +1,4 @@
-@extends('admin.dashboard')
-
+@extends('admin._includes.layout')
 @section('content')
     <div class="container">
         <div class="row">
@@ -17,6 +16,8 @@
                         {!! Field::password('password') !!}
 
                         {!! Field::password('password_confirmation') !!}
+
+                        {!! Field::select('Type',['admin','expert','user'] ,null, ['empty' => 'Selecciona tu sistema operativo favorito' ]) !!}
 
                         {!! Form::submit('Send', ['class' => 'btn btn-success']) !!}
 

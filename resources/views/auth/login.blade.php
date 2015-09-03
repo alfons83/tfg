@@ -1,54 +1,46 @@
-@extends('layout')
-
+@extends('auth.layout')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">@lang('auth.login_title')</div>
-                    <div class="panel-body">
-                        @include('partials/errors')
-                        @include('partials/success')
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="{{url('http://laravel.app/')}}"><b>Admin</b>Pattern</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('validation.attributes.email')</label>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">@lang('validation.attributes.password')</label>
-                                <div class="col-md-6">
-                                    <input name="password" type="password" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> @lang('auth.remember')
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-                                        @lang('auth.login_button')
-                                    </button>
-
-                                    <a href="/password/email">@lang('auth.forgot_link')</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="form-group has-feedback">
+                <input type="email" name="email" class="form-control" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
-        </div>
-    </div>
+
+            <div class="form-group has-feedback">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-7">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox"> @lang('auth.remember')
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+                <div class="col-xs-5">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat"> @lang('auth.login_button')</button>
+                </div><!-- /.col -->
+            </div>
+        </form>
+
+        <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a href="{{url('http://laravel.app/facebook/authorize')}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+            <a href="{{url('http://laravel.app/github/authorize')}}" class="btn btn-block btn-social btn-github btn-flat"><i class="fa fa-github"></i> Sign in using Github</a>
+        </div><!-- /.social-auth-links -->
+
+        <a href="{{ url('password/email') }}">@lang('auth.forgot_link')</a><br>
+        <a href="{{ url('register') }}" class="text-center">Register a new membership</a>
+
+    </div><!-- /.login-box-body -->
+</div><!-- /.login-box -->
 @endsection

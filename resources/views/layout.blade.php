@@ -9,6 +9,15 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{  asset('css/app.css') }}">
+    <link rel="stylesheet"  type="text/css"  href="{{asset('bower_components/style.css')}}" >
+  {{--  <link rel="stylesheet"  type="text/css"  href="{{asset('bower_components/patterns/laratricks.css')}}" >
+    <link rel="stylesheet"  type="text/css"  href="{{asset('bower_components/patterns/styles.css')}}" >--}}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab:300,700' rel='stylesheet' type='text/css'>
+
 
 </head>
 <body>
@@ -33,6 +42,7 @@
                     <li><a href="{{url('admin/post')}}">Posts</a></li>
                     <li><a href="{{url('admin/tag')}}">Tag</a></li>
                     <li><a href="{{url('admin/category')}}">Category</a></li>
+                    <li><a href="{{url('admin/dashboard')}}">Panel</a></li>
 
                 @endif
             </ul>
@@ -45,7 +55,7 @@
 
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('logout') }}">Logout</a></li>
                         </ul>

@@ -21,7 +21,7 @@ class CreatePatternsTable extends Migration
             $table->string('slug')->unique();
             $table->boolean('active');
 
-            $table->enum('status',['Open','Pending','Resolved','Closed']);
+            $table->enum('status',['Open','Pending','Closed']);
 
             $table->integer('user_id')->unsigned();
 
