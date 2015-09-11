@@ -104,7 +104,7 @@ class AuthController extends Controller
      */
     public function redirectPath()
     {
-        return url('home');
+        return url('admin/dashboard');
     }
 
     /**

@@ -6,7 +6,8 @@ use App\Models\patterns\Pattern;
 use App\Models\User;
 
 use Illuminate\Http\Request;
-
+use Input;
+use File;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Routing\Redirector;
@@ -26,13 +27,10 @@ class UsersController extends Controller
     public function index()
     {
 
-        $users = User::paginate();
+        $users = User::paginate(10);
 
         return view('admin.users.index', compact('users'));
 
-
-
-       // return User::all();
     }
 
     /**
@@ -54,6 +52,32 @@ class UsersController extends Controller
     public function store(Request $request, Redirector $redirect)
     {
         $user = User::create($request->all());
+
+        if (Input::file('image') AND Input::file('image')->isValid()) {
+            $destinationPath = 'uploads/users/user_'.$user->id.'/'; // upload path
+
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+
+            // Metemos la foto en el sistema
+            Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+
+            // Borramos las fotos del sistema
+            $photos = User::where('user_id', $user->id)->get();
+
+            if($photos)
+                File::delete(array_pluck($photos, 'path'));
+
+            // Borramos las fotos de la BD
+            patterns\Photos::where('user_id', $user->id)->delete();
+
+            // Metemos la foto en la BD
+            patterns\Photos::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
+
+            //return redirect('/uploads/'.$fileName);
+        }
+
+
         return redirect()->route('admin.users.index');
     }
 
@@ -71,6 +95,9 @@ class UsersController extends Controller
             return view('admin.users.view', compact('user'));
         else
             return redirect()->route('admin.users.index');
+
+        /*$user = User::findOrFail($id);
+        return view ('admin.users.view' , compact('user'));*/
     }
 
     /**
@@ -100,6 +127,29 @@ class UsersController extends Controller
 
         $user->fill($request->all());
         $user->save();
+        if (Input::file('image') AND Input::file('image')->isValid()) {
+            $destinationPath = 'uploads/users/user_'.$user->id.'/'; // upload path
+
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+
+            // Metemos la foto en el sistema
+            Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+
+            // Borramos las fotos del sistema
+            $photos = User::where('user_id', $user->id)->get();
+
+            if($photos)
+                File::delete(array_pluck($photos, 'path'));
+
+            // Borramos las fotos de la BD
+            patterns\Photos::where('user_id', $user->id)->delete();
+
+            // Metemos la foto en la BD
+            patterns\Photos::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
+
+            //return redirect('/uploads/'.$fileName);
+        }
 
         return redirect()->back();
     }
@@ -110,36 +160,47 @@ class UsersController extends Controller
      * @param  int $id
      * @return Response
      */
-   public function destroy($id, Request $request)
+   public function destroy($id)
 
     {
         $user = User::findOrFail($id);
 
         $user->delete();
 
-        $message = $user->name . ' fue eliminado de nuestros registros';
-
-        if ($request->ajax()) {
-            return response()->json([
-                'id'      => $user->id,
-                'message' => $message
-            ]);
-        }
+        $message = $user->first_name . ' fue eliminado de nuestros registros';
 
         Session::flash('message', $message);
         return redirect()->route('admin.users.index');
     }
 
-    public function getFavorites($user_id)
+/*    public function active($id)
+
+    {
+        $user = User::findOrFail($id);
+
+        $user = User::where('active',1);
+
+        return redirect()->route('admin.users.index');
+    }
+
+    public function deactive($id)
+
+    {
+        $user = User::findOrFail($id);
+
+        $user = User::where('active',0);
+
+        return redirect()->route('admin.users.index');
+
+    }*/
+
+   /* public function getFavorites($user_id)
     {
         $pattern = Pattern::findAllFavorites($user_id);
 
         return view('admin.users.favorites', compact('pattern'));
-    }
+    }*/
 
-    public function profile()
-    {
-        return view('admin.users.profile');
-    }
+
 
 }

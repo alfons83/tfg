@@ -2,7 +2,9 @@
 
 namespace App\Models\patterns;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
 
 class Pattern extends Model
 {
@@ -18,7 +20,7 @@ class Pattern extends Model
      *
      * @var array
      */
-    //protected $fillable = ['name', 'description'];
+    protected $fillable = ['title', 'content','path','slug','active','status','user_id','subcategory_id','rule_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -28,28 +30,42 @@ class Pattern extends Model
      *
      * */
 
-    protected $hidden = [];
 
-
-    public function tags()
+    public function setPathAttribute($path)
     {
-        return $this->hasMany('App\Models\patterns\Tag');
+        if(!empty($path)){
+            $title = Carbon::now()->second.$path->getClientOriginalName();
+            $this->attributes['path'] = $title;
+            \Storage::disk('local')->put($title, \File::get($path));
+        }
     }
+
+    public function photos()
+    {
+        return $this->hasMany('App\Models\patterns\Photos');
+    }
+
+
+
+    public function rulesNielsen()
+    {
+        return $this->hasMany('App\Models\patterns\RulesNielsen');
+    }
+
+  /*  public function categories()
+    {
+        return $this->belongsToMany('App\Models\patterns\Category',  'id', 'pattern_id');
+    }*/
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\patterns\Category',  'id', 'pattern_id');
+        return $this->hasMany('App\Models\patterns\Category');
     }
 
-    public function categorys()
-    {
-        return $this->hasMany('App\Models\patterns\Category', 'pattern_id');
-    }
-
-    public function cate()
+ /*   public function cate()
     {
         return $this->hasOne('App\Models\patterns\Category');
-    }
+    }*/
 
 
     public function author()
@@ -68,11 +84,7 @@ class Pattern extends Model
     }
 
 
-    public function count(Request $request)
-    {
-        return Pattern::count($request['id']);
-    }
-
+/*
     public function favourites()
     {
         return $this->belongsToMany('App\Models\patterns\patterns', 'pattern_votes','pattern_id', 'user_id');
@@ -86,7 +98,7 @@ class Pattern extends Model
     public function removeFavourites($pattern)
     {
         $this->favourites()->detach($pattern->id);
-    }
+    }*/
 
 
 }

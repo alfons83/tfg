@@ -18,16 +18,31 @@ class CreatePatternsTable extends Migration
 
             $table->string('title')->unique();
             $table->text('content');
+            $table->string('path');
             $table->string('slug')->unique();
             $table->boolean('active');
 
-            $table->enum('status',['Open','Pending','Closed']);
+            $table->enum('status',['Open','Closed']);
 
             $table->integer('user_id')->unsigned();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+
+            $table->integer('subcategory_id')->unsigned();
+
+            $table->foreign('subcategory_id')
+                ->references('id')
+                ->on('pattern_subcategories')
+                ->onDelete('cascade');
+
+            $table->integer('rule_id')->unsigned();
+
+            $table->foreign('rule_id')
+                ->references('id')
+                ->on('pattern_rules_nielsen')
                 ->onDelete('cascade');
 
             $table->timestamps();

@@ -1,5 +1,4 @@
 @extends('admin._includes.layout')
-
 @section('content')
     <h1>hello</h1>
 

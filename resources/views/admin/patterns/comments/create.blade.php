@@ -1,5 +1,4 @@
-@extends('admin.dashboard')
-
+@extends('admin._includes.layout')
 @section('content')
     <div class="container">
         <div class="row">
@@ -8,7 +7,7 @@
                     <div class="panel-heading">New Pattern</div>
                     <div class="panel-body">
 
-                        {!! Form::open(['route' => 'admin.patterns.store' , 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'admin.patterns-comments.store' , 'method' => 'POST']) !!}
 
                         {!! Field::text('title') !!}
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin\patterns;
 
 use App\Models\patterns\Category;
+use App\Models\patterns\subcategory;
 
 use Illuminate\Http\Request;
 
@@ -21,9 +22,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate();
+        $categories = Category::paginate(10);
 
-        return view('admin.category.index', compact('categories'));
+        return view('admin.patterns.category.index', compact('categories'));
     }
 
     /**
@@ -33,7 +34,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = Category::all();
+        return view('admin.patterns.category.create', compact('categories'));
     }
 
     /**
@@ -45,7 +47,7 @@ class CategoryController extends Controller
     public function store(Request $request, Redirector $redirect)
     {
         $category = Category::create($request->all());
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.patterns-category.index');
     }
 
     /**
@@ -69,7 +71,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.patterns.category.edit', compact('category'));
     }
 
     /**
@@ -111,6 +113,18 @@ class CategoryController extends Controller
         }
 
         Session::flash('message', $message);
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.patterns-category.index');
+    }
+
+
+
+    public function getSubcategories(Request $request) {
+        //if($request->ajax()) {
+            $subcategories = Category::find($request['category_id'])->subcategories;
+
+            return $subcategories;
+        //}
+
+        //return false;
     }
 }

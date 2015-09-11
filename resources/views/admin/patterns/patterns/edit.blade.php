@@ -14,11 +14,19 @@
 
                         @endif
 
-                        {!! Form::Model($patterns, ['route' => ['admin.patterns.update', $patterns->id], 'method' => 'PUT']) !!}
+                        {!! Form::Model($patterns, ['route' => ['admin.patterns.update', $patterns->id], 'method' => 'PUT', 'files' => true]) !!}
+
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         {!! Field::text('title') !!}
 
                         {!! Field::textarea('content') !!}
+
+                        @foreach($patterns->photos as $photo)
+                            <img src="{{ asset($photo->path) }}">
+                        @endforeach
+
+                        {!! Form::file('image') !!}
 
                         {!! Field::text('slug') !!}
 
@@ -35,15 +43,17 @@
                         {!! Form::close()  !!}
 
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 @endsection
-
+@section('scripts')
 <script>
 
-    $('.textarea').wysihtml5();
+    $(function() {
+        $('.textarea').wysihtml5();
+    });
 
 </script>
+@stop

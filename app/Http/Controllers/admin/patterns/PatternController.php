@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\patterns;
 use App\Models\User;
 
-
+use Input;
+use File;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class PatternController extends Controller
@@ -20,7 +22,7 @@ class PatternController extends Controller
      */
     public function index()
     {
-        $patterns = patterns\Pattern::paginate();
+        $patterns = patterns\Pattern::all();
 
         return view('admin.patterns.patterns.index', compact('patterns'));
     }
@@ -32,7 +34,14 @@ class PatternController extends Controller
      */
     public function create()
     {
-        return view('admin.patterns.patterns.create');
+
+        $categories = patterns\Category::all();
+
+        $rules = patterns\RulesNielsen::all();
+
+
+
+        return view('admin.patterns.patterns.create', compact('rules','categories'));
     }
 
     /**
@@ -44,7 +53,37 @@ class PatternController extends Controller
     public function store(Request $request, Redirector $redirect)
     {
         $patterns = patterns\Pattern::create($request->all());
-        return redirect()->route('admin.patterns.patterns.index',compact('patterns'));
+
+        if (Input::file('image') AND Input::file('image')->isValid()) {
+            $destinationPath = 'uploads/patterns/pattern_'.$patterns->id.'/'; // upload path
+
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+
+            // Metemos la foto en el sistema
+            Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+
+            // Borramos las fotos del sistema
+            $photos = patterns\Photos::where('pattern_id', $patterns->id)->get();
+
+            if($photos)
+                File::delete(array_pluck($photos, 'path'));
+
+            // Borramos las fotos de la BD
+            patterns\Photos::where('pattern_id', $patterns->id)->delete();
+
+            // Metemos la foto en la BD
+            patterns\Photos::create(['path' => $destinationPath.$fileName, 'pattern_id' => $patterns->id]);
+
+            //return redirect('/uploads/'.$fileName);
+        }
+
+
+
+
+
+
+        return redirect()->route('admin.patterns.index',compact('patterns'));
     }
 
     /**
@@ -55,7 +94,14 @@ class PatternController extends Controller
      */
     public function show($id)
     {
+
+
+
         $patterns = patterns\Pattern::findOrFail($id);
+
+
+
+
 
         if($patterns)
             return view('admin.patterns.patterns.view', compact('patterns'));
@@ -83,12 +129,35 @@ class PatternController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update( Request $request ,$id)
+    public function update(Request $request ,$id)
     {
         $patterns = patterns\Pattern::findOrFail($id);
-
         $patterns->fill($request->all());
         $patterns->save();
+
+        if (Input::file('image') AND Input::file('image')->isValid()) {
+            $destinationPath = 'uploads/patterns/pattern_'.$patterns->id.'/'; // upload path
+
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = rand(11111,99999).'.'.$extension; // renameing image
+
+            // Metemos la foto en el sistema
+            Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+
+            // Borramos las fotos del sistema
+            $photos = patterns\Photos::where('pattern_id', $patterns->id)->get();
+
+            if($photos)
+                File::delete(array_pluck($photos, 'path'));
+
+            // Borramos las fotos de la BD
+            patterns\Photos::where('pattern_id', $patterns->id)->delete();
+
+            // Metemos la foto en la BD
+            patterns\Photos::create(['path' => $destinationPath.$fileName, 'pattern_id' => $patterns->id]);
+
+            //return redirect('/uploads/'.$fileName);
+        }
 
         return redirect()->back();
     }
@@ -143,5 +212,13 @@ class PatternController extends Controller
         $patterns = patterns\Pattern::findOrFail($id);
         Auth::user()->removeFavourites($id);
         return Redirect::back();
+    }
+
+
+
+
+
+    public function postUploadPhoto() {
+
     }
 }

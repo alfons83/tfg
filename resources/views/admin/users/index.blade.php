@@ -13,10 +13,9 @@
             <div class="box-footer clearfix">
                 <a href="{{route('admin.users.create')}}" class="btn btn-sm btn-info btn-flat pull-right"> New User</a>
             </div>
-            <!-- /.box-footer -->
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table no-margin">
+                    <table id="users" class="table no-margin">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -40,22 +39,11 @@
                                 <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->type }}</td>
-
                                 @if ($user->active === 1)
-
-                                <td><span class="label label-info">Si</span></td>
+                                    <td><span class="label label-info">Si</span></td>
                                 @else
-
                                     <td><span class="label label-default">No</span></td>
-
                                 @endif
-
-
-
-
-
-
-
                                 <td>
                                     <a class="btn btn-success btn-xs"
                                        href="{{ route ('admin.users.show', $user->id) }}"><i
@@ -63,8 +51,8 @@
                                     <a class="btn btn-primary btn-xs"
                                        href="{{ route ('admin.users.edit', $user->id) }}"><i
                                                 class="fa fa-pencil-square-o"></i></a>
-                                    <a class="btn btn-danger btn-xs"
-                                       href="{{ route ('admin.users.destroy', $user->id) }}" class="btn-delete"><i
+                                    <a class="btn btn-danger btn-xs btn-delete"
+                                       href="{{ route ('admin.users.destroy', $user->id) }}"><i
                                                 class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
@@ -75,32 +63,28 @@
                         {!!  $users->render() !!}
                     </div>
                 </div>
-                <!-- /.table-responsive -->
             </div>
-            <!-- /.box-body -->
-
         </div>
-        <!-- /.box -->
-
     </div>
-
     {!!   Form::open(['route'=>['admin.users.destroy',':USER_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
 
-
-
     {!! Form::close()  !!}
-
 @endsection
-
 @section('scripts')
+    @parent
     <script>
         $(document).ready(function () {
-            $('.btn-delete').click(function (e) {
+            $('#users').DataTable({
+                paging: false
+            });
+        });
 
+        $(document).ready(function () {
+            $('.btn-delete').click(function (e) {
                 e.preventDefault();
 
-                var row = $(this).parents('tr');
-                var id = row.data('id');
+                var row = $(this).closest('tr');
+                var id = row.data('data-id');
                 var form = $('#form-delete');
                 var url = form.attr('action').replace(':USER_ID', id);
                 var data = form.serialize();
@@ -108,11 +92,8 @@
                 row.fadeOut();
 
                 $.post(url, data, function (result) {
-                    alert(result);
+
                 });
-
-
-                alert(data);
 
 
             });

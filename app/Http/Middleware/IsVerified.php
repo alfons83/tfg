@@ -22,10 +22,9 @@ class IsVerified
 
 
         if($user->registration_token != null) {
-            return redirect()->route('home')
+            return redirect()->route('login')
                 ->with('alert', 'Por favor verifica tu email');
         }
-
 
 
         return $next($request);

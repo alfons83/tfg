@@ -46,7 +46,7 @@ class CommentController extends Controller
     public function store(Request $request, Redirector $redirect)
     {
         $comments = Comment::create($request->all());
-        return redirect()->route('admin.patterns.comments.index');
+        return redirect()->route('admin.patterns-comments.index');
     }
 
     /**
@@ -62,7 +62,7 @@ class CommentController extends Controller
         if($comments)
             return view('admin.patterns.comments.view', compact('comments'));
         else
-            return redirect()->route('admin.patterns.comments.index');
+            return redirect()->route('admin.patterns-comments.index');
     }
 
     /**
@@ -116,6 +116,6 @@ class CommentController extends Controller
         }
 
         Session::flash('message', $message);
-        return redirect()->route('admin.patterns.comments.index');
+        return redirect()->route('admin.patterns-comments.index');
     }
 }

@@ -16,16 +16,15 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
             $this->call(UserTableSeeder::class);
-            $this->call(BlogPostTableSeeder::class);
-            $this->call(BlogTagTableSeeder::class);
-            $this->call(PatternTableSeeder::class);
-            $this->call(PatternTagTableSeeder::class);
-            $this->call(UserProfileTableSeeder::class);
-            $this->call(BlogCategoryTableSeeder::class);
-            $this->call(BlogCommentTableSeeder::class);
+            $this->call(PatternRulesNielsenTableSeeder::class);
+            $this->call(PatternPhotosTableSeeder::class);
             $this->call(PatternCategoryTableSeeder::class);
+            $this->call(PatternSubcategoriesTableSeeder::class);
+            $this->call(PatternTableSeeder::class);
+            $this->call(UserProfileTableSeeder::class);
             $this->call(PatternCommentTableSeeder::class);
             $this->call(PatternVoteTableSeeder::class);
+
 
 
         Model::reguard();

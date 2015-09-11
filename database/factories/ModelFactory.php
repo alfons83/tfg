@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Str;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
 
 $factory->define(App\Models\User::class, function ($faker) {
     return [
@@ -19,7 +9,6 @@ $factory->define(App\Models\User::class, function ($faker) {
         'username' => $faker->userName,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'full_name' => $faker->firstName . $faker->lastName,
         'email' => $faker->unique()->email,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
@@ -41,50 +30,6 @@ $factory->define(App\Models\User_profile::class, function ($faker) {
     ];
 });
 
-$factory->define(App\Models\blog\Tag::class, function ($faker) {
-    return [
-        'name' => $faker->word,
-        'description' => $faker->text,
-        'post_id' =>$faker->randomDigitNotNull
-    ];
-});
-
-$factory->define(App\Models\blog\Post::class, function ($faker) {
-
-    $title = $faker->sentence(mt_rand(3,10));
-    $slug  = Str::slug($title);
-
-    return [
-        'title'  => $title,
-        'content'   => join("n\n", $faker->paragraphs(mt_rand(3,6))),
-        'slug' => $slug,
-        'user_id' =>$faker->randomDigitNotNull,
-        'active' => $faker->boolean,
-        'published_at' => $faker->dateTimeBetween('-1 month','+3 days')
-    ];
-});
-
-$factory->define(App\Models\blog\Category::class, function ($faker) {
-
-    return [
-        'name' => $faker->word,
-        'description' => $faker->text,
-        'post_id' =>$faker->randomDigitNotNull
-    ];
-
-});
-
-$factory->define(App\Models\blog\Comment::class, function ($faker) {
-
-    return [
-        'comment' => $faker->text,
-        'active' => $faker->boolean,
-        'user_id' =>$faker->randomDigitNotNull,
-        'post_id' =>$faker->randomDigitNotNull
-
-    ];
-
-});
 
 $factory->define(App\Models\patterns\Pattern::class, function ($faker) {
 
@@ -95,8 +40,10 @@ $factory->define(App\Models\patterns\Pattern::class, function ($faker) {
         'title'  => $title,
         'content'   => join("n\n", $faker->paragraphs(mt_rand(3,6))),
         'slug' => $slug,
-        'status' => $faker->randomElement(['Open','Pending','Resolved','Closed']),
+        'status' => $faker->randomElement(['Open','Closed']),
         'user_id' =>$faker->randomDigitNotNull,
+        'subcategory_id' =>$faker->randomDigitNotNull,
+        'rule_id' =>$faker->randomDigitNotNull,
         'active' => $faker->boolean,
         'published_at' => $faker->dateTimeBetween('-1 month','+3 days')
     ];
@@ -114,24 +61,26 @@ $factory->define(App\Models\patterns\Vote::class, function ($faker) {
 
 });
 
-$factory->define(App\Models\patterns\Tag::class, function ($faker) {
-    return [
-        'name' => $faker->word,
-        'description' => $faker->text,
-        'pattern_id' =>$faker->randomDigitNotNull
-    ];
-});
-
-
 $factory->define(App\Models\patterns\Category::class, function ($faker) {
 
-    return [
-        'name' => $faker->word,
-        'description' => $faker->text,
-        'pattern_id' =>$faker->randomDigitNotNull
+   return [
+        /*'name' => $faker->word,
+        'description' => $faker->text,*/
+
     ];
 
 });
+
+$factory->define(App\Models\patterns\Subcategory::class, function ($faker) {
+    return [
+        /*'name' => $faker->word,
+        'description' => $faker->text,
+        'category_id' =>$faker->randomDigitNotNull*/
+    ];
+});
+
+
+
 
 $factory->define(App\Models\patterns\Comment::class, function ($faker) {
 
@@ -143,6 +92,19 @@ $factory->define(App\Models\patterns\Comment::class, function ($faker) {
 
     ];
 
+});
+
+$factory->define(App\Models\patterns\RulesNielsen::class, function ($faker) {
+    return [
+        /*'name' => $faker->word,
+        'description' => $faker->text,*/
+    ];
+});
+
+$factory->define(App\Models\patterns\Photos::class, function ($faker) {
+    return [
+
+    ];
 });
 
 

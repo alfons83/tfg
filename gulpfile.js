@@ -42,13 +42,15 @@ elixir(function (mix) {
 
     // Combine scripts
 
-    mix.scripts([
+    mix
+        .scripts([
             'js/jquery.js',
             'js/bootstrap.js'
         ],
         'public/assets/js/admin.js',
         'resources/assets'
-    );
+        )
+        .copy();
 
     // Compile Less
 

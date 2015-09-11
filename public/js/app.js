@@ -59,3 +59,33 @@ $(document).ready(function () {
     });
 
 });
+
+jQuery(document).ready(function() {
+    //Al iniciar mandamos consultar todos los paises que se mantienen en nuestra base de datos atravez de la ruta paises
+
+    $.getJSON('category1', function( category ){
+        $('#category').html('');
+        $('#category').append($('<option></option>').text('Seleccione una categoria').val(''));
+        $.each(pais, function(i) {
+            $('#category').append("<option value=\""+category[i].id+"\">"+category[i].category+"<\/option>");
+        });
+        $('#category').select2();
+    });
+
+    //El metodo Change nos permite realizar una acción al momento que estamos interactuando con el elemento con ID pais
+
+    $("#category").change( function(event) {
+        $.ajax({
+            url: 'subcategory1',
+            type: 'POST',
+            data: 'category=' + $("#category option:selected").val(),
+        }).done(function ( subcategory ){
+            $('#subcategory').html('');
+            $('#subcategory').append($('<option></option>').text('Seleccione una subcategoria').val(''));
+            $.each(subcategory, function(i) {
+                $('#subcategory').append("<option value=\""+subcategory[i].id+"\">"+subcategory[i].subcategory+"<\/option>");
+            });
+            $('#subcategory').select2();
+        });
+    });
+});

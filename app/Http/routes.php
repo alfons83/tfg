@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,10 @@ Route::get('/', [
 ]);*/
 
 
-Route::get('/', [
+ use App\Models\patterns\Category;
+ use App\Models\patterns\Subcategory;
+
+ Route::get('/', [
     'as'   => 'patterns.latest',
     'uses' => 'home\\PatternController@latest'
 ]);
@@ -57,16 +60,6 @@ Route::get('/solicitud/{id}', [
 
 
 
-
-
-
-
-
-
-
-
-
-
 // Authentication Social routes ...
 
 Route::get('{provider}/authorize', function($provider){
@@ -90,15 +83,15 @@ Route::get('{provider}/login', function($provider){
 // Authentication routes ...
 
 Route::get('login', [
-    'uses' => 'Auth\AuthController@getLogin',
+    'uses' => 'Auth\\AuthController@getLogin',
     'as' => 'login'
 ]);
 
-Route::post('login', 'Auth\AuthController@postLogin');
+Route::post('login', 'Auth\\AuthController@postLogin');
 
 
 Route::get('logout', [
-    'uses' => 'Auth\AuthController@getLogout',
+    'uses' => 'Auth\\AuthController@getLogout',
     'as' => 'logout'
 ]);
 
@@ -106,123 +99,78 @@ Route::get('logout', [
 // Registration routes ...
 
 Route::get('register', [
-    'uses' => 'Auth\AuthController@getRegister',
+    'uses' => 'Auth\\AuthController@getRegister',
     'as' => 'register'
 ]);
 
-Route::post('register', 'Auth\AuthController@postRegister');
+Route::post('register', 'Auth\\AuthController@postRegister');
 
 
 Route::get('confirmation/{token}', [
-    'uses' => 'Auth\AuthController@getConfirmation',
+    'uses' => 'Auth\\AuthController@getConfirmation',
     'as' => 'confirmation'
 ]);
 
 
 //  Password reset ink request routes ...
 
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
+Route::get('password/email', 'Auth\\PasswordController@getEmail');
+Route::post('password/email', 'Auth\\PasswordController@postEmail');
 
 // Password reset routes ...
 
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-// Retail
+Route::get('password/reset/{token}', 'Auth\\PasswordController@getReset');
+Route::post('password/reset', 'Auth\\PasswordController@postReset');
 
 
-Route::get('blog/{slug}', 'Blog\BlogController@showPost');
-
-Route::get('blog/', 'Blog\BlogController@index');
-
-# Search routes
-
-Route::get('search', 'SearchController@index');
-
-//Route::get('dropzone', 'DropzoneController@index');
-
-//Route::post('dropzone/uploadFiles', 'DropzoneController@uploadFiles');
 
 
 
 Route::group(['middleware' => 'auth'], function () {
 
 
-
-
-
-   /* Route::get('profile', function () {
-        return view('profile');
-    });*/
-
     Route::get('admin/dashboard', 'admin\\AdminController@index');
-    Route::get('admin/dashboard', 'admin\\AdminController@pattern_latest');
-   // Route::get('admin/dashboard', 'admin\\AdminController@user_latest');
-    //Route::get('admin/dashboard', 'admin\\AdminController@expert_latest');
-
-    Route::get('account/password', 'AccountController@getPassword');
-    Route::post('account/password', 'AccountController@postPassword');
 
 
-/*   Route::group(['middleware' => 'verified'], function () {
+    Route::get('account/password', 'home\\AccountController@getPassword');
+    Route::post('account/password', 'home\\AccountController@postPassword');
 
-        Route::get('publish', function () {
-            return view('publish');
-        });
-
-        Route::post('publish', function () {
-            return Request::all();
-        });
-
-    });*/
 
     Route::group(['middleware' => 'type:admin'], function () {
 
-
-        // Admin Blog Post Routes
-
-        Route::resource("admin/blog/post", "admin\\blog\\PostController");
-
-
-        // Admin Blog Category Routes
-
-        Route::resource("admin/blog/category", "admin\\blog\\CategoryController");
-
-
-        // Admin Blog Tag Routes
-
-        Route::resource("admin/blog/tag", "admin\\blog\\TagController");
-
-        // Admin Blog Comments Routes
-
-        Route::resource("admin/blog/comments", "admin\\blog\\CommentController");
 
 
         // Admin Users Routes
 
         Route::resource("admin/users", "admin\\UsersController");
 
+
         // Admin Patterns Routes
 
         Route::resource("admin/patterns", "admin\\patterns\\PatternController");
+        Route::post("admin/upload-photo-pattern", "admin\\patterns\\PatternController@postUploadPhoto");
 
-        // Admin Patterns Tag Routes
+        // Admin Patterns Subcategory Routes
 
-        Route::resource("admin/patterns/tag","admin\\patterns\\TagController");
+        Route::resource("admin/patterns-subcategory","admin\\patterns\\SubcategoryController");
 
+
+        // Admin PatternsCategory Routes
+
+        Route::resource("admin/patterns-category", "admin\\patterns\\CategoryController");
+        Route::get("admin/patterns-category-subcategories", "admin\\patterns\\CategoryController@getSubcategories");
 
         // Admin Blog Category Routes
 
-        Route::resource("admin/patterns/category", "admin\\patterns\\CategoryController");
+        Route::resource("admin/patterns-nielsen", "admin\\patterns\\NielsenController");
 
 
         // Admin Blog Comments Routes
 
-        Route::resource("admin/patterns/comments", "admin\\patterns\\CommentController");
+        Route::resource("admin/patterns-comments", "admin\\patterns\\CommentController");
 
 
-        Route::get('admin/profile', 'admin\\UsersController@profile');
+
 
 
     });
@@ -231,32 +179,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'type:expert'], function () {
 
 
-        // Admin Blog Post Routes
+/*
+        // Admin Users Profile
 
-        Route::resource("admin/blog/post", "admin\\blog\\PostController");
-
-
-        // Admin Blog Category Routes
-
-        Route::resource("admin/blog/category", "admin\\blog\\CategoryController");
-
-
-        // Admin Blog Tag Routes
-
-        Route::resource("admin/blog/tag", "admin\\blog\\TagController");
-
-        // Admin Blog Comments Routes
-
-        Route::resource("admin/blog/comments", "admin\\blog\\CommentController");
-
+        Route::get('admin/user/profile', 'admin\\UsersController@profile');*/
 
         // Admin Patterns Routes
 
         Route::resource("admin/patterns", "admin\\patterns\\PatternController");
 
-        // Admin Patterns Tag Routes
+      /*  // Admin Patterns Tag Routes
 
-        Route::resource("admin/patterns/tag","admin\\patterns\\TagController");
+        Route::resource("admin/patterns/subcategory","admin\\patterns\\SubcategoryController");
 
 
         // Admin Blog Category Routes
@@ -266,7 +200,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Admin Blog Comments Routes
 
-        Route::resource("admin/patterns/comments", "admin\\patterns\\CommentController");
+        Route::resource("admin/patterns/comments", "admin\\patterns\\CommentController");*/
 
 
 
@@ -274,9 +208,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-
-Route::get("pruebas", function () {
-    return view("pruebas");
-});
 
 

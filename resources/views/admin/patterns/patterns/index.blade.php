@@ -16,14 +16,12 @@
             <!-- /.box-footer -->
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table no-margin">
+                    <table id="patterns" class="table no-margin">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>title</th>
-                           {{--<th>Categoria</th>--}}
-                            {{--<th>Patron</th>--}}
-                            {{--<th>slug</th>--}}
+                            <th>Author</th>
                             <th>Status</th>
                             <th>Acciones</th>
                         </tr>
@@ -40,21 +38,16 @@
                                 @endforeach--}}
                                 {{--<td>{{ $pattern->comment }}</td>--}}
                               {{--  <td>{{ $pattern->slug }}</td>--}}
-
+                                    <td>{{ $pattern->author->first_name.' '.$pattern->author->last_name }}</td>
                                 @if ($pattern->status === 'Open')
 
                                     <td><span class="label label-success">Open</span></td>
 
-                                @elseif  ($pattern->status === 'Pending')
 
-                                    <td><span class="label label-warning">Pending</span></td>
-
-                                @elseif ($pattern->status === 'Closed')
+                                @else ($pattern->status === 'Closed')
 
                                     <td><span class="label label-danger">Closed</span></td>
 
-                                 @elseif ($pattern->status === '')
-                                    <td><span class="label label-default">Ein?</span></td>
                                 @endif
 
                                 <td>
@@ -73,7 +66,7 @@
                         </tbody>
                     </table>
                     <div class=" pull-right">
-                        {!!  $patterns->render() !!}
+                       {{-- {!!  $patterns->render() !!}--}}
                     </div>
                 </div>
                 <!-- /.table-responsive -->
@@ -95,6 +88,14 @@
 
 @section('scripts')
     <script>
+
+        $(document).ready(function () {
+            $('#patterns').DataTable({
+                paging: true
+            });
+        });
+
+
         $(document).ready(function () {
             $('.btn-delete').click(function (e) {
 

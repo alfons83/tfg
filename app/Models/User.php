@@ -36,6 +36,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     protected $hidden = ['password', 'remember_token'];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     /**
      * Get the Complete Name for the user.
      *
@@ -79,34 +81,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
 
 
-    public function count(Request $request)
-
-    {
-        return User::count($request['id'],'active', 1);
-    }
-
-    /*public function active(Request $request, $result)
-    {
-        $result = \DB::table('users')
-            ->select('email')
-            ->where('active', true)
-            ->get();
-    }*/
-
-
-    function currentUser()
-    {
-        return auth()->user();
-    }
-
-
-    /**
-     * Get the password for the user.
-     *
-     * @return string
-     */
-
-
     public function getAuthPassword()
 
     {
@@ -120,22 +94,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $this->attributes['password'] = bcrypt($value);
         }
     }*/
-    public function scopeName($query, $name)
-    {
-        if (trim($name) != "")
-        {
-            $query->where('full_name', "LIKE", "%$name%");
-        }
-    }
 
-    public function scopeType($query, $type)
-    {
-        $types = config('options.types');
-        if ($type != "" && isset($types[$type]))
-        {
-            $query->where('type', $type);
-        }
-    }
 
     public function is($type)
     {

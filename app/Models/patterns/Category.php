@@ -6,32 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
+
     protected $table = 'pattern_categories';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $fillable = ['id','name', 'description'];
 
-    protected $fillable = ['name', 'description', 'post_id'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     *
-    protected $hidden = ['password', 'remember_token'];
-     */
-
-    /*public function patterns()
+    public function subcategories()
     {
 
-        return $this->belongsToMany('App\Models\patterns\Pattern','patterns');
-    }*/
+        return $this->hasMany('App\Models\patterns\SubCategory');
+    }
 }

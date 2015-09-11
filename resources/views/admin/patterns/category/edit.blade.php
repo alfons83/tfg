@@ -1,5 +1,4 @@
-@extends('layout')
-
+@extends('admin._includes.layout')
 @section('content')
     <div class="container">
         <div class="row">
@@ -14,13 +13,11 @@
 
                         @endif
 
-                        {!! Form::Model($category, ['route' => ['admin.category.update', $category->id], 'method' => 'PUT']) !!}
+                        {!! Form::Model($category, ['route' => ['admin.patterns-category.update', $category->id], 'method' => 'PUT']) !!}
 
                         {!! Field::text('name') !!}
 
                         {!! Field::text('description') !!}
-
-                        {!! Field::number('post_id') !!}
 
 
                         <button type="submit" class="btn btn-default">Actualizar Categoria</button>
@@ -28,7 +25,7 @@
                         {!! Form::Close() !!}
 
 
-                        {!!   Form::open(['route'=>['admin.category.destroy',$category], 'method' => 'DELETE']) !!}
+                        {!!   Form::open(['route'=>['admin.patterns-category.destroy',$category], 'method' => 'DELETE']) !!}
 
                         <button type="submit" class="btn btn-danger ">Eliminar</button>
 

@@ -19,7 +19,6 @@ class UserTableSeeder extends Seeder
             'username' => 'alfons83',
             'first_name' => 'Alfonso',
             'last_name' => 'Serrano Albert',
-            'full_name'   => 'Alfonso Serrano Albert',
             'email' => 'admin@admin.com',
             'type' => 'admin',
             'gender' => 'male',

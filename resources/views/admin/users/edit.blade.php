@@ -25,6 +25,12 @@
 
                         {!! Field::password('password_confirmation') !!}
 
+                          {{--  @foreach($user as $photo)
+                                <img src="{{ asset($photo->path) }}">
+                            @endforeach--}}
+
+                            {!! Form::file('image') !!}
+
                         <button type="submit" class="btn btn-primary">Actualizar usuario</button>
 
                         {!! Form::Close() !!}
@@ -40,5 +46,8 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
 @endsection

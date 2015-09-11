@@ -17,6 +17,8 @@
 
                         {!! Field::password('password_confirmation') !!}
 
+                        {!! Form::file('image') !!}
+
                         {!! Field::select('Type',['admin','expert','user'] ,null, ['empty' => 'Selecciona tu sistema operativo favorito' ]) !!}
 
                         {!! Form::submit('Send', ['class' => 'btn btn-success']) !!}
@@ -29,5 +31,10 @@
                 </div>
             </div>
         </div>
+
+
+        
+        
+        
     </div>
 @endsection

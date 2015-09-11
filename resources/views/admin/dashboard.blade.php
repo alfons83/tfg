@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            {{--@include('admin.dashboard.user_list')--}}
+            @include('admin.dashboard.user_list')
         </div>
         <div class="col-md-6">
             @include('admin.dashboard.expert_list')

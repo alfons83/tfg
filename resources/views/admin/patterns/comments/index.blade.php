@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="box-footer clearfix">
-                <a href="{{route('admin.patterns.create')}}" class="btn btn-sm btn-info btn-flat pull-right"> New Pattern</a>
+                <a href="{{route('admin.patterns-comments.create')}}" class="btn btn-sm btn-info btn-flat pull-right"> New Pattern</a>
             </div>
             <!-- /.box-footer -->
             <div class="box-body">
@@ -21,9 +21,6 @@
                         <tr>
                             <th>#</th>
                             <th>Comment</th>
-                           {{--<th>Categoria</th>--}}
-                            {{--<th>Patron</th>--}}
-                            {{--<th>slug</th>--}}
                             <th>Active</th>
                             <th>Acciones</th>
                         </tr>
@@ -33,24 +30,18 @@
                             <tr data-id="{{ $comment->id }}">
                                 <td>{{ $comment->id }}</td>
                                 <td>
-                                    <a href="{{route('admin.comments.show', ['comments' => $comment->id])}}">{{ $comment->comment }}</a>
+                                    <a href="{{route('admin.patterns-comments.show', ['comments' => $comment->id])}}">{{ $comment->comment }}</a>
                                 </td>
-                              {{-- @foreach($pattern->categorys as $category)
-                                <td>{{ $category->name }}</td>
-                                @endforeach--}}
-                                {{--<td>{{ $pattern->comment }}</td>--}}
-                              {{--  <td>{{ $pattern->slug }}</td>--}}
-
                                 <td>{{ $comment->active }}</td>
                                 <td>
                                     <a class="btn btn-success btn-xs"
-                                       href="{{route('admin.comments.show', ['comments' => $comment->id])}}"><i
+                                       href="{{route('admin.patterns-comments.show', ['comments' => $comment->id])}}"><i
                                                 class="fa fa-info-circle"></i></a>
                                     <a class="btn btn-primary btn-xs"
-                                       href="{{route('admin.comments.edit', ['comments' => $comment->id])}}"><i
+                                       href="{{route('admin.patterns-comments.edit', ['comments' => $comment->id])}}"><i
                                                 class="fa fa-pencil-square-o"></i></a>
                                     <a class="btn btn-danger btn-xs"
-                                       href="{{route('admin.comments.destroy',['commens' => $comment->id])}}" class="btn-delete"><i
+                                       href="{{route('admin.patterns-comments.destroy',['comments' => $comment->id])}}" class="btn-delete"><i
                                                 class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
@@ -70,7 +61,7 @@
 
     </div>
 
-    {!!   Form::open(['route'=>['admin.comments.destroy',':COMMENT_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
+    {!!   Form::open(['route'=>['admin.patterns-comments.destroy',':COMMENT_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
 
 
 

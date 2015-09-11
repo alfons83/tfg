@@ -1,5 +1,4 @@
-@extends('layout')
-
+@extends('admin._includes.layout')
 @section('content')
     <div class="container">
         <div class="row">
@@ -16,7 +15,7 @@
                     <div class="panel-body">
 
                         <p>
-                            <a class="btn btn-info" href="{{ route('admin.category.create') }}" role="button">
+                            <a class="btn btn-info" href="{{ route('admin.patterns-category.create') }}" role="button">
                                 Nueva Categoria
                             </a>
                         </p>
@@ -27,7 +26,6 @@
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Descripciones</th>
-                                <th>Post_Id</th>
                                 <th>Acciones</th>
                             </tr>
                             @foreach ($categories as $category)
@@ -35,11 +33,10 @@
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td>{{ $category->post_id }}</td>
 
                                     <td>
-                                        <a class="btn btn-primary btn-xs" href="{{ route ('admin.category.edit', $category->id) }}">Editar</a>
-                                        <a class="btn btn-danger btn-xs" href="{{ route ('admin.category.destroy', $category->id) }}" class="btn-delete">Eliminar</a>
+                                        <a class="btn btn-primary btn-xs" href="{{ route ('admin.patterns-category.edit', $category->id) }}">Editar</a>
+                                        <a class="btn btn-danger btn-xs" href="{{ route ('admin.patterns-category.destroy', $category->id) }}" class="btn-delete">Eliminar</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -51,7 +48,7 @@
         </div>
     </div>
 
-    {!!   Form::open(['route'=>['admin.category.destroy',':CATEGORY_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
+    {!!   Form::open(['route'=>['admin.patterns-category.destroy',':CATEGORY_ID'], 'method' => 'DELETE','id'=>'form-delete']) !!}
 
 
 

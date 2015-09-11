@@ -1,5 +1,4 @@
 @extends('admin._includes.layout')
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -14,7 +13,7 @@
 
                         @endif
 
-                        {!! Form::Model($patterns, ['route' => ['admin.patterns.update', $patterns->id], 'method' => 'PUT']) !!}
+                        {!! Form::Model($patterns, ['route' => ['admin.patterns-comments.update', $patterns->id], 'method' => 'PUT']) !!}
 
                         {!! Field::text('title') !!}
 
@@ -28,7 +27,7 @@
 
                         {!! Form::Close() !!}
 
-                        {!!   Form::open(['route'=>['admin.patterns.destroy',$patterns], 'method' => 'DELETE']) !!}
+                        {!!   Form::open(['route'=>['admin.patterns-comments.destroy',$patterns], 'method' => 'DELETE']) !!}
 
                         <button type="submit" class="btn btn-danger ">Eliminar</button>
 
