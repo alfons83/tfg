@@ -160,12 +160,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource("admin/patterns-category", "admin\\patterns\\CategoryController");
         Route::get("admin/patterns-category-subcategories", "admin\\patterns\\CategoryController@getSubcategories");
 
-        // Admin Blog Category Routes
+        // Admin Category Routes
 
         Route::resource("admin/patterns-nielsen", "admin\\patterns\\NielsenController");
 
 
-        // Admin Blog Comments Routes
+        // Admin Comments Routes
 
         Route::resource("admin/patterns-comments", "admin\\patterns\\CommentController");
 

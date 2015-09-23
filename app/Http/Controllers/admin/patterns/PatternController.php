@@ -119,7 +119,11 @@ class PatternController extends Controller
     {
         $patterns = patterns\Pattern::findOrFail($id);
 
-        return view('admin.patterns.patterns.edit', compact('patterns'));
+        $categories = patterns\Category::all();
+
+        $rules = patterns\RulesNielsen::all();
+
+        return view('admin.patterns.patterns.edit', compact('patterns','rules','categories'));
     }
 
     /**
@@ -188,7 +192,8 @@ class PatternController extends Controller
         return redirect()->route('admin.patterns.patterns.index');
     }
 
-    /**
+
+  /**
      * Show the favorited tricks page.
      *
      * @return \Response
@@ -215,10 +220,4 @@ class PatternController extends Controller
     }
 
 
-
-
-
-    public function postUploadPhoto() {
-
-    }
 }

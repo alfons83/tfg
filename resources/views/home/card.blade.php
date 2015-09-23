@@ -1,19 +1,31 @@
-<div href="#" class="trick-card col-lg-4 col-md-6 col-sm-6 col-xs-12">
-    <div class="trick-card-inner js-goto-trick" data-slug="saepe-animi-autem-autem-est-eum-praesentium-rerum-enim-temporibus">
+<div class="row">
 
-
-
-        <a class="trick-card-title" href="">
-            Saepe animi autem autem est eum praesentium rerum enim temporibus.
-        </a>
-        <div class="trick-card-stats trick-card-by">by <b><a href="#">Alfonso Serrano</a></b></div>
-        <div class="trick-card-stats clearfix">
-            <div class="trick-card-timeago"></div>
-            <div class="trick-card-stat-block"><span class="fa fa-eye"></span> 289</div>
-            <div class="trick-card-stat-block text-right"><span class="fa fa-heart"></span> 3</div>
-        </div>
-        <div class="trick-card-tags clearfix">
-                <a href="" class="tag" title=""></a>
+    <div class="col-sm-6 col-md-4"> <!-- column 1 -->
+        <div class="thumbnail"> <!--  thumbnail 1  -->
+            <img src="china.jpg" alt="china thumbnail"> <!-- image 1 -->
+            <div class="caption"> <!-- caption -->
+                <h3>The Great Wall of China</h3>
+                <p>The Great Wall of China is a series of fortifications
+                    made of stone, brick, tamped earth, wood, and other
+                    materials, generally built along an east-to-west line
+                    across the historical northern borders of China</p>
+                <p><a href="#" class="btn btn-primary" role="button">Buy Tickets</a> <!-- btn 1 -->
+                    <a href="#" class="btn btn-default" role="button">Add to Wishlist</a></p>  <!-- btn 2 -->
+            </div>
         </div>
     </div>
+
+    <div class="col-sm-6 col-md-4"> <!-- column 2 -->
+        <div class="thumbnail"> <!-- thumbnail 2 -->
+            <img src="statue-liberty.jpg" alt="Statue of Liberty thumbnail">  <!-- image 2 -->
+            <div class="caption">  <!-- caption -->
+                <h3>Statue of Liberty</h3>
+                <p>The Statue of Liberty is a colossal neoclassical sculpture on Liberty
+                    Island in the middle of New York Harbor, in Manhattan, New York City.</p>
+                <p><a href="#" class="btn btn-primary" role="button">Buy Tickets</a>   <!-- btn 1 -->
+                    <a href="#" class="btn btn-default" role="button">Add to Wishlist</a></p>  <!-- btn 2 -->
+            </div>
+        </div>
+    </div>
+
 </div>

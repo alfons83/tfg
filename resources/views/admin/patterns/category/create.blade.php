@@ -2,10 +2,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Nueva Categoria</div>
-                    <div class="panel-body">
+            <div class="col-md-10">
+                <div class="box box-info">
+                    <div class="box-header "> Nueva Categoria</div>
+                    <div class="box-body pad">
 
                         {!! Form::open(['route' => 'admin.patterns-category.store' , 'method' => 'POST']) !!}
 
@@ -15,7 +15,7 @@
 
 
 
-                        {!! Form::submit('Crear', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Crear', ['class' => 'btn btn-primary']) !!}
 
                         {!! Form::close() !!}
 

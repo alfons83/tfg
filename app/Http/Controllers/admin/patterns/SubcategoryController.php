@@ -21,7 +21,7 @@ class SubcategoryController extends Controller
      */
     public function index()
     {
-        $subcategory = SubCategory::paginate();
+        $subcategory = SubCategory::paginate(15);
         return view('admin.patterns.subcategory.index', compact('subcategory'));
     }
 
@@ -56,7 +56,12 @@ class SubcategoryController extends Controller
      */
     public function show($id)
     {
-        dd(SubCategory::findOrFail($id));
+        $subcategory = SubCategory::findOrFail($id);
+
+        if($subcategory)
+            return view('admin.patterns.subcategory.view', compact('subcategory'));
+        else
+            return redirect()->route('admin.patterns-subcategory.index');
 
     }
 

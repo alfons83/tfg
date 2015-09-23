@@ -149,6 +149,7 @@ return [
         Styde\Html\HtmlServiceProvider::class,
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
         'AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider',
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
     ],
@@ -202,6 +203,7 @@ return [
         'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
         'OAuth' => 'AdamWathan\EloquentOAuth\Facades\OAuth',
         'Gate' => Illuminate\Support\Facades\Gate::class,
+        'PDF' => 'Barryvdh\DomPDF\Facade',
 
 
     ],

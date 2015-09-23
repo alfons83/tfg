@@ -20,7 +20,7 @@ class Pattern extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content','path','slug','active','status','user_id','subcategory_id','rule_id'];
+    protected $fillable = ['title', 'problem','usage','solution','active','status','user_id','subcategory_id','rule_id'];
 
     /**
      * The attributes excluded from the model's JSON form.

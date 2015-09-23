@@ -19,7 +19,7 @@ class User_profile extends Model
      *
      * @var array
      */
-    protected $fillable = ['bio','birthdate', 'twitter', 'website'];
+    protected $fillable = ['path','gender','bio','birthdate', 'twitter', 'website'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -30,6 +30,11 @@ class User_profile extends Model
      */
 
     protected $hidden = [];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
 
     public function getAgeAttribute()

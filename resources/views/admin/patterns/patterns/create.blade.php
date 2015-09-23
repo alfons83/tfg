@@ -3,10 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">New Pattern</div>
-                    <div class="panel-body">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header ">New Pattern</div>
+                    <div class="box-body pad">
 
                         {!! Form::open(['route' => 'admin.patterns.store' , 'method' => 'POST' , 'files' => true]) !!}
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -15,14 +15,16 @@
                         {!! Field::text('title') !!}
 
 
-                        {!! Field::textarea('content') !!}
+                        {!! Field::textarea('problem') !!}
 
-                        {!! Field::text('slug') !!}
 
                         {!! Form::file('image') !!}
 
+                        {!! Field::textarea('usage') !!}
+                        {!! Field::textarea('solution') !!}
 
-                                                <div class="col-lg-4">
+
+                                                <div class="col-md-4">
 
                                                     <div class="form-group">
                                                         <label for="">Nielsen Rules Usability</label>
@@ -35,7 +37,7 @@
 
                                                 </div>
 
-                        <div class="col-lg-4">
+                        <div class="col-md-4">
 
 
                             <div class="form-group">
@@ -73,6 +75,10 @@
 @section('scripts')
 <script>
 
+    CKEDITOR.replace( 'problem' );
+    CKEDITOR.replace( 'usage' );
+    CKEDITOR.replace( 'solution' );
+
 $(function() {
     $('#category').change(function() {
         var category_id = $(this).val();
@@ -90,7 +96,11 @@ $(function() {
                 }
             });
     });
+
+
 });
+
+
 
 </script>
 @endsection

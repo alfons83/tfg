@@ -17,9 +17,9 @@ class CreatePatternsTable extends Migration
             $table->increments('id');
 
             $table->string('title')->unique();
-            $table->text('content');
-            $table->string('path');
-            $table->string('slug')->unique();
+            $table->text('problem');
+            $table->text('usage');
+            $table->text('solution');
             $table->boolean('active');
 
             $table->enum('status',['Open','Closed']);

@@ -21,7 +21,7 @@ class NielsenController extends Controller
      */
     public function index()
     {
-        $nielsen = RulesNielsen::paginate(10);
+        $nielsen = RulesNielsen::paginate();
 
         return view('admin.patterns.nielsen.index', compact('nielsen'));
     }
@@ -42,8 +42,7 @@ class NielsenController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request, Redirector $redirect
-    )
+    public function store(Request $request, Redirector $redirect)
     {
         $nielsen = RulesNielsen::create($request->all());
         return redirect()->route('admin.patterns-nielsen.index');
@@ -57,7 +56,12 @@ class NielsenController extends Controller
      */
     public function show($id)
     {
-        dd(RulesNielsen::findOrFail($id));
+        $nielsen = RulesNielsen::findOrFail($id);
+
+        if($nielsen)
+            return view('admin.patterns.nielsen.view', compact('nielsen'));
+        else
+            return redirect()->route('admin.patterns-nielsen.index');
 
     }
 
@@ -87,6 +91,8 @@ class NielsenController extends Controller
 
         $nielsen->fill($request->all());
         $nielsen->save();
+
+
 
         return redirect()->back();
     }

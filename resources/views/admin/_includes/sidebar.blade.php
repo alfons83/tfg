@@ -75,7 +75,7 @@
             @if(Auth::user()->type === 'admin')
             @if(str_contains(Route::currentRouteAction(), 'SubcategoryController@show'))
                 <li class="treeview ">
-                    <a href="{{ url('admin/patterns-subcategory') }}"><i class="fa fa-tags></i> <span>Subcategory management</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <a href="{{ url('admin/patterns-subcategory') }}"><i class="fa fa-tags"></i> <span>Subcategory management</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('admin.patterns-subcategory.index')}}"><- Back to list</a></li>
                         <li><a href="{{route('admin.patterns-subcategory.edit', ['subcategory' => $subcategory->id])}}">Edit Subcategory</a></li>
@@ -98,7 +98,7 @@
                     <a href="{{ url('admin/patterns-nielsen') }}"><i class="fa fa-newspaper-o"></i> <span>Nielsen management</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('admin.patterns-nielsen.index')}}"><- Back to list</a></li>
-                        <li><a href="{{route('admin.patterns-nielsen.edit', ['subcategory' => $subcategory->id])}}">Edit Nielsen</a></li>
+                        <li><a href="{{route('admin.patterns-nielsen.edit', ['subcategory' => $nielsen->id])}}">Edit Nielsen</a></li>
                         {!!   Form::open(['route'=>['admin.patterns-nielsen.destroy',$nielsen->id], 'method' => 'DELETE','id'=>'form-deletee']) !!}
                         <li><a href="#" class="btn-deletee">Delete Nielsen</a></li>
                         {!! Form::close()  !!}
@@ -118,9 +118,9 @@
                     <a href="{{ url('admin/patterns-comment') }}"><i class="fa fa-comments"></i> <span>Comment management</span> <i class="fa fa-angle-left pull-right"></i></a>
                     <ul class="treeview-menu">
                         <li><a href="{{route('admin.patterns-comments.index')}}"><- Back to list</a></li>
-                        <li><a href="{{route('admin.patterns-comments.edit', ['comment' => $comment->id])}}">Edit Comment</a></li>
-                        {!!   Form::open(['route'=>['admin.patterns-comments.destroy',$comment->id], 'method' => 'DELETE','id'=>'form-deletee']) !!}
-                        <li><a href="#" class="btn-deletee">Delete Nielsen</a></li>
+                        <li><a href="{{route('admin.patterns-comments.edit', ['comment' => $comments->id])}}">Edit Comment</a></li>
+                        {!!   Form::open(['route'=>['admin.patterns-comments.destroy',$comments->id], 'method' => 'DELETE','id'=>'form-deletee']) !!}
+                        <li><a href="#" class="btn-deletee">Delete Comment</a></li>
                         {!! Form::close()  !!}
                     </ul>
                 </li>

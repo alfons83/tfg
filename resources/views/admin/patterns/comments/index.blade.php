@@ -3,7 +3,7 @@
     <div class="row">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Patterns</h3>
+                <h3 class="box-title">Comments</h3>
 
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
@@ -11,18 +11,18 @@
                 </div>
             </div>
             <div class="box-footer clearfix">
-                <a href="{{route('admin.patterns-comments.create')}}" class="btn btn-sm btn-info btn-flat pull-right"> New Pattern</a>
+                <a href="{{route('admin.patterns-comments.create')}}" class="btn btn-sm btn-info btn-flat pull-right">
+                    New Comment</a>
             </div>
-            <!-- /.box-footer -->
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table no-margin">
+                    <table id="comments" class="table no-margin">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Comment</th>
-                            <th>Active</th>
-                            <th>Acciones</th>
+                            <th>Author</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,9 @@
                                 <td>
                                     <a href="{{route('admin.patterns-comments.show', ['comments' => $comment->id])}}">{{ $comment->comment }}</a>
                                 </td>
-                                <td>{{ $comment->active }}</td>
+                                <td>
+                                    <a href="{{route('admin.users.show', ['user_id' =>$comment->user->id])}}">{{ $comment->user->first_name. ' '.$comment->user->last_name }}</a>
+                                </td>
                                 <td>
                                     <a class="btn btn-success btn-xs"
                                        href="{{route('admin.patterns-comments.show', ['comments' => $comment->id])}}"><i
@@ -41,8 +43,9 @@
                                        href="{{route('admin.patterns-comments.edit', ['comments' => $comment->id])}}"><i
                                                 class="fa fa-pencil-square-o"></i></a>
                                     <a class="btn btn-danger btn-xs"
-                                       href="{{route('admin.patterns-comments.destroy',['comments' => $comment->id])}}" class="btn-delete"><i
-                                                class="fa fa-trash-o"></i></a>
+                                       href="{{route('admin.patterns-comments.destroy',['comments' => $comment->id])}}"
+                                       class="btn-delete">
+                                        <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -52,12 +55,12 @@
                         {!!  $comments->render() !!}
                     </div>
                 </div>
-                <!-- /.table-responsive -->
+
             </div>
-            <!-- /.box-body -->
+
 
         </div>
-        <!-- /.box -->
+
 
     </div>
 
@@ -70,7 +73,14 @@
 @endsection
 
 @section('scripts')
+    @parent
     <script>
+        $(document).ready(function () {
+            $('#comments').DataTable({
+                paging: false
+            });
+        });
+
         $(document).ready(function () {
             $('.btn-delete').click(function (e) {
 
@@ -85,11 +95,8 @@
                 row.fadeOut();
 
                 $.post(url, data, function (result) {
-                    alert(result);
+                    toastr.success('Comentario eliminado.');
                 });
-
-
-                alert(data);
 
 
             });

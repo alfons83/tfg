@@ -2,10 +2,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Edit Pattern: {{ $patterns->title }} </div>
-                    <div class="panel-body">
+            <div class="col-md-10">
+                <div class="box box-info">
+                    <div class="box-header ">Editar Comentario: <strong>{{ $comments->name }}</strong></div>
+                    <div class="box-body pad">
 
                         @if(Session::has('message'))
 
@@ -13,25 +13,21 @@
 
                         @endif
 
-                        {!! Form::Model($patterns, ['route' => ['admin.patterns-comments.update', $patterns->id], 'method' => 'PUT']) !!}
+                        {!! Form::Model($comments, ['route' => ['admin.patterns-comments.update', $comments->id], 'method' => 'PUT']) !!}
 
-                        {!! Field::text('title') !!}
+                        {!! Field::textarea('comment') !!}
 
-                        {!! Field::textarea('content') !!}
 
-                        {!! Field::text('slug') !!}
 
-                        {!! Field::text('active') !!}
-
-                        <button type="submit" class="btn btn-default">Actualizar usuario</button>
+                        <button type="submit" class="btn btn-primary">Actualizar comentario</button>
 
                         {!! Form::Close() !!}
 
-                        {!!   Form::open(['route'=>['admin.patterns-comments.destroy',$patterns], 'method' => 'DELETE']) !!}
+                 {{--       {!!   Form::open(['route'=>['admin.patterns-comments.destroy',$patterns], 'method' => 'DELETE']) !!}
 
                         <button type="submit" class="btn btn-danger ">Eliminar</button>
 
-                        {!! Form::close()  !!}
+                        {!! Form::close()  !!}--}}
 
                     </div>
 
@@ -40,9 +36,10 @@
         </div>
     </div>
 @endsection
-
+@section('scripts')
 <script>
 
-    $('.textarea').wysihtml5();
+    CKEDITOR.replace( 'comment' );
 
 </script>
+@endsection

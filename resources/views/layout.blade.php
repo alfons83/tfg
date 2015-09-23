@@ -37,11 +37,20 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 @if (Auth::check())
-                <li><a href="{{url('account')}}">Account</a></li>
-                    <li><a href="{{url('admin/users')}}">Users</a></li>
-                    <li><a href="{{url('admin/post')}}">Posts</a></li>
-                    <li><a href="{{url('admin/tag')}}">Tag</a></li>
-                    <li><a href="{{url('admin/category')}}">Category</a></li>
+                    <ul class="nav navbar-nav">
+                        <li role="presentation">
+                            <a href="/">Recientes</a>
+                        </li>
+                        <li role="presentation" class="active">
+                            <a href="/populares">Populares</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="/pendientes">Abiertas</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="/tutoriales>Finalizadas</a>
+                        </li>
+                    </ul>
                     <li><a href="{{url('admin/dashboard')}}">Panel</a></li>
 
                 @endif

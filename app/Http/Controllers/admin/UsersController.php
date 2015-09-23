@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\patterns\Pattern;
 use App\Models\User;
 
+use App\Models\User_profile;
 use Illuminate\Http\Request;
 use Input;
 use File;
@@ -40,6 +41,8 @@ class UsersController extends Controller
      */
     public function create()
     {
+
+
         return view('admin.users.create');
     }
 
@@ -63,22 +66,22 @@ class UsersController extends Controller
             Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
 
             // Borramos las fotos del sistema
-            $photos = User::where('user_id', $user->id)->get();
+            $photos = User_profile::where('user_id', $user->id)->get();
 
             if($photos)
                 File::delete(array_pluck($photos, 'path'));
 
             // Borramos las fotos de la BD
-            patterns\Photos::where('user_id', $user->id)->delete();
+            User_profile::where('user_id', $user->id)->delete();
 
             // Metemos la foto en la BD
-            patterns\Photos::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
+            User_profile::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
 
             //return redirect('/uploads/'.$fileName);
         }
 
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index', compact('user'));
     }
 
     /**
@@ -127,6 +130,7 @@ class UsersController extends Controller
 
         $user->fill($request->all());
         $user->save();
+
         if (Input::file('image') AND Input::file('image')->isValid()) {
             $destinationPath = 'uploads/users/user_'.$user->id.'/'; // upload path
 
@@ -137,16 +141,16 @@ class UsersController extends Controller
             Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
 
             // Borramos las fotos del sistema
-            $photos = User::where('user_id', $user->id)->get();
+            $photos = User_profile::where('user_id', $user->id)->get();
 
             if($photos)
                 File::delete(array_pluck($photos, 'path'));
 
             // Borramos las fotos de la BD
-            patterns\Photos::where('user_id', $user->id)->delete();
+            User_profile::where('user_id', $user->id)->delete();
 
             // Metemos la foto en la BD
-            patterns\Photos::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
+            User_profile::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
 
             //return redirect('/uploads/'.$fileName);
         }

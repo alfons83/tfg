@@ -2,10 +2,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Editar Categoría: {{ $category->name }} </div>
-                    <div class="panel-body">
+            <div class="col-md-10">
+                <div class="box box-info">
+                    <div class="box-header ">Editar Regla: <strong>{{ $nielsen->name }}</strong></div>
+                    <div class="box-body pad">
 
                         @if(Session::has('message'))
 
@@ -13,25 +13,23 @@
 
                         @endif
 
-                        {!! Form::Model($category, ['route' => ['admin.category.update', $category->id], 'method' => 'PUT']) !!}
+                        {!! Form::Model($nielsen, ['route' => ['admin.patterns-nielsen.update', $nielsen->id], 'method' => 'PUT']) !!}
 
                         {!! Field::text('name') !!}
 
                         {!! Field::text('description') !!}
 
-                        {!! Field::number('post_id') !!}
 
-
-                        <button type="submit" class="btn btn-default">Actualizar Categoria</button>
+                        <button type="submit" class="btn btn-primary">Actualizar Regla</button>
 
                         {!! Form::Close() !!}
 
 
-                        {!!   Form::open(['route'=>['admin.category.destroy',$category], 'method' => 'DELETE']) !!}
+{{--                        {!!   Form::open(['route'=>['admin.patterns-nielsen.destroy',$nielsen], 'method' => 'DELETE']) !!}
 
                         <button type="submit" class="btn btn-danger ">Eliminar</button>
 
-                        {!! Form::close()  !!}
+                        {!! Form::close()  !!}--}}
 
                     </div>
 

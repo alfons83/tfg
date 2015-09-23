@@ -2,23 +2,18 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">New Pattern</div>
-                    <div class="panel-body">
+            <div class="col-md-10">
+                <div class="box box-info">
+                    <div class="box-header ">Nuevo  Comentario: </div>
+                    <div class="box-body pad">
 
                         {!! Form::open(['route' => 'admin.patterns-comments.store' , 'method' => 'POST']) !!}
 
-                        {!! Field::text('title') !!}
+
+                        {!! Field::textarea('comment') !!}
 
 
-                        {!! Field::textarea('content') !!}
-
-                        {!! Field::text('slug') !!}
-
-                        {!! Field::text('active') !!}
-
-                        {!! Form::submit('Send', ['class' => 'btn btn-success']) !!}
+                        {!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}
 
                         {!! Form::close() !!}
 
@@ -30,9 +25,10 @@
         </div>
     </div>
 @endsection
-
+@section('scripts')
 <script>
 
-    $('.textarea').wysihtml5();
+    CKEDITOR.replace( 'comment' );
 
 </script>
+@endsection

@@ -6,8 +6,9 @@
             <section style="padding-bottom: 50px; padding-top: 50px;">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="/bower_components/admin-lte/dist/img/user1-128x128.jpg"
-                             class="img-rounded img-responsive"/>
+                        @foreach($user->photos as $photo)
+                            <img src="{{ asset($photo->path) }}">
+                        @endforeach
                         <br/>
                         <br/>
                         <label>Full Name</label>

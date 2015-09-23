@@ -13,8 +13,7 @@
             <div class="box-footer clearfix">
                 <a href="{{route('admin.users.create')}}" class="btn btn-sm btn-info btn-flat pull-right"> New User</a>
             </div>
-            <div class="box-body">
-                <div class="table-responsive">
+            <div class="box-body ">
                     <table id="users" class="table no-margin">
                         <thead>
                         <tr>
@@ -92,7 +91,7 @@
                 row.fadeOut();
 
                 $.post(url, data, function (result) {
-
+                    toastr.success('Usuario eliminado.');
                 });
 
 

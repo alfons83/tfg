@@ -18,7 +18,7 @@ class Comment extends Model
      *
      * @var array
      */
-    //protected $fillable = ['name', 'description'];
+    protected $fillable = ['comment', 'active','user_id','pattern_id'];
 
     /**
      * The attributes excluded from the model's JSON form.

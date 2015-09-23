@@ -15,6 +15,8 @@ class CreateUserProfilesTable extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
 
             $table->increments('id');
+            $table->string('path');
+            $table->enum('gender', ['male', 'female']);
             $table->date('birthdate');
             $table->mediumText('bio')->nullable();
             $table->string('twitter')->nullable();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin\patterns;
 
 use App\Models\patterns\Comment;
 use App\Models\User;
+use App\Models\patterns\Pattern;
 
 use Illuminate\Http\Request;
 
@@ -46,6 +47,7 @@ class CommentController extends Controller
     public function store(Request $request, Redirector $redirect)
     {
         $comments = Comment::create($request->all());
+
         return redirect()->route('admin.patterns-comments.index');
     }
 
@@ -57,7 +59,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $comments = User::findOrFail($id);
+        $comments = Comment::findOrFail($id);
 
         if($comments)
             return view('admin.patterns.comments.view', compact('comments'));

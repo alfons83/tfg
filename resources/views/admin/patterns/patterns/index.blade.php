@@ -38,7 +38,9 @@
                                 @endforeach--}}
                                 {{--<td>{{ $pattern->comment }}</td>--}}
                               {{--  <td>{{ $pattern->slug }}</td>--}}
-                                    <td>{{ $pattern->author->first_name.' '.$pattern->author->last_name }}</td>
+                                    <td>
+                                        <a href="{{route('admin.users.show', ['patterns' => $pattern->author->id])}}">{{ $pattern->author->first_name.' '.$pattern->author->last_name }}</a>
+                                    </td>
                                 @if ($pattern->status === 'Open')
 
                                     <td><span class="label label-success">Open</span></td>
@@ -110,11 +112,11 @@
                 row.fadeOut();
 
                 $.post(url, data, function (result) {
-                    alert(result);
+                    toastr.success('Patron eliminado.');
                 });
 
 
-                alert(data);
+
 
 
             });

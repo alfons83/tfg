@@ -1,41 +1,49 @@
 @extends('admin._includes.layout')
 
 @section('content')
-    <h1>hello</h1>
+    <div class="container">
+        <div class="row">
+            <section style="padding-bottom: 50px; padding-top: 50px;">
+                <div class="row">
+                    <div class="col-md-12">
 
-    <pre>
-{{$patterns}}
-    </pre>
-<pre>
-    Usuario logueado: {{Auth::user()}}
+                       <br/>
+                        <br/>
+                        <label>Titulo</label>
+                        <p class="lead">{!! $patterns->title !!}</p>
 
-</pre>
 
-   CATEGORIAS
-    <pre>
-      {{--  @foreach($patterns->categorys as $category)
-            {{$category->name}}
-        @endforeach--}}
-       </pre>
+                        @foreach($patterns->photos as $photo)
+                            <img src="{{ asset($photo->path) }}">
+                        @endforeach
+                        <label>Problem</label>
 
-    <h1>Listas vinculadas</h1>
+                        {!!  $patterns->problem !!}
 
-    {{ Form::open() }}
-    <select id="category_id" name="category_id">
-        <option>Seleccione una empresa</option>
-        <option value="1">Empresa 1</option>
-        <option value="2">Empresa 2</option>
-        <option value="3">Empresa 3</option>
-    </select>
-    <br>
-    <select id="subcategory_id" name="subcategory_id">
-        <option>Debe escoger una empresa primero</option>
-    </select>
-    {{ Form::close()}}
 
+                            <label>Usage</label>
+                            <p class="lead">{!! $patterns->usage!!}</p>
+
+                            <label>Solution</label>
+                            <p class="lead">{!!  $patterns->solution!!}</p>
+
+
+                    </div>
+                    {{--<div class="col-md-6">
+                        <div class="alert alert-info">
+                            <h2>User Bio : </h2>
+                            <h4>{{ $user->first_name . '' .$user->last_name}}</h4>
+                            <p>
+                                {{$user->profile->bio }}
+                            </p>
+                        </div>
+                        <div>
+                            <a href="{{$user->profile->twitter }}" class="btn btn-social btn-twitter">
+                                <i class="fa fa-twitter"></i>&nbsp; Twitter </a>
+                        </div>
+                    </div>--}}
+                </div>
+            </section>
+        </div>
+    </div>
 @stop
-
-
-
-@section('scripts')
-@endsection

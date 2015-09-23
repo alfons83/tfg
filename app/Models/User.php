@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -27,7 +29,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['username','firstName','lastName', 'email', 'password', 'type', 'active'];
+    protected $fillable = ['username','first_name','last_name', 'email', 'password', 'type', 'active'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -44,11 +46,20 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @return string
      */
 
-    public function posts()
-
+    public function setPathAttribute($path)
     {
-        return $this->hasMany('App\Models\blog\Post');
+        if(!empty($path)){
+            $title = Carbon::now()->second.$path->getClientOriginalName();
+            $this->attributes['path'] = $title;
+            \Storage::disk('local')->put($title, \File::get($path));
+        }
     }
+
+    public function photos()
+    {
+        return $this->hasMany('App\Models\User_profile');
+    }
+
 
     public function patterns()
     {

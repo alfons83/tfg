@@ -58,7 +58,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        dd(Category::findOrFail($id));
+        $category = Category::findOrFail($id);
+
+        if($category)
+            return view('admin.patterns.category.view', compact('category'));
+        else
+            return redirect()->route('admin.patterns-category.index');
     }
 
     /**
