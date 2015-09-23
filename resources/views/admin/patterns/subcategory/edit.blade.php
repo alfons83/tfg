@@ -24,12 +24,11 @@
                             <label for="">Category</label>
                             <select class="form-control input-sm" id="category">
                                 <option>--- Seleccionar ---</option>
-                                @foreach($subcategory->categories as $category)
+                                @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-
 
                         <button type="submit" class="btn btn-default">Actualizar Subcategoria</button>
 

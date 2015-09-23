@@ -29,7 +29,6 @@ class SubCategory extends Model
 
     public function categories()
     {
-
         return $this->belongsTo('App\Models\patterns\Category' ,'category_id');
     }
 }

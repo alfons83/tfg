@@ -36,10 +36,9 @@
 
                                 <div class="form-group">
                                     <label for="">Status</label>
-                                    <select class="form-control input-sm" name="status_id">
-                                        @foreach($patterns as $pattern)
-                                            <option value="{{ $pattern->id }}">{{ $pattern->status }}</option>
-                                        @endforeach
+                                    <select class="form-control input-sm" name="status">
+                                        <option value="Open" {{ $patterns->status === 'Open' ? 'selected' : '' }}>Open</option>
+                                        <option value="Closed" {{ $patterns->status === 'Closed' ? 'selected' : '' }}>Closed</option>
                                     </select>
                                 </div>
 

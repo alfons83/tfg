@@ -29,19 +29,20 @@
 
                         {!! Field::password('password_confirmation') !!}
 
-                       {{-- <div class="form-group">
-                            <label for="">Type</label>
-                            <select class="form-control input-sm" id="type">
-                                <option>--- Seleccionar ---</option>
-                                --}}{{--@foreach($user as $user)
-                                    <option value="{{$user->id}}">{{$user->type}}</option>
-                                @endforeach--}}{{--
-                            </select>
-                        </div>--}}
+                            <div class="col-md-4">
 
-                        @foreach($user->photos as $profile)
-                            <img src="{{ asset($profile->path) }}">
-                        @endforeach
+                                <div class="form-group">
+                                    <label for="">Tipo</label>
+                                    <select class="form-control input-sm" name="type">
+                                        <option value="admin" {{ $user->type === 'admin' ? 'selected' : '' }}>Admin</option>
+                                        <option value="expert" {{ $user->type === 'expert' ? 'selected' : '' }}>Expert</option>
+                                        <option value="user" {{ $user->type === 'user' ? 'selected' : '' }}>User</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">
 
                         {!! Form::file('image') !!}
 

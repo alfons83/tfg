@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-
+use Auth;
 use App\Models\patterns\Category;
 use App\Models\patterns\Comment;
 use App\Models\patterns\Pattern;
@@ -25,6 +25,9 @@ class AdminController extends Controller
      */
     public function index()
     {
+        if(Auth::user()->type === 'user')
+            return redirect('admin/patterns');
+
         $users = User::all();
 
        // $date = $users->timestamp;

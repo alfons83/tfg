@@ -206,6 +206,37 @@ Route::group(['middleware' => 'auth'], function () {
 
     });
 
+
+    Route::group(['middleware' => 'type:user'], function () {
+
+
+        /*
+                // Admin Users Profile
+
+                Route::get('admin/user/profile', 'admin\\UsersController@profile');*/
+
+        // Admin Patterns Routes
+
+        Route::resource("admin/patterns", "admin\\patterns\\PatternController");
+
+        /*  // Admin Patterns Tag Routes
+
+          Route::resource("admin/patterns/subcategory","admin\\patterns\\SubcategoryController");
+
+
+          // Admin Blog Category Routes
+
+          Route::resource("admin/patterns/category", "admin\\patterns\\CategoryController");
+
+
+          // Admin Blog Comments Routes
+
+          Route::resource("admin/patterns/comments", "admin\\patterns\\CommentController");*/
+
+
+
+    });
+
 });
 
 

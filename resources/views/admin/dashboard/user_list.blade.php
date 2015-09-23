@@ -11,7 +11,7 @@
         <ul class="users-list clearfix">
             @foreach($usersNormals as $user)
                 <li data-id="{{ $user->id }}">
-                    <img src="/bower_components/admin-lte/dist/img/user1-128x128.jpg" alt="User Image">
+                   {{-- <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">--}}
                     <a class="users-list-name" href="{{route('admin.users.show', ['users' => $user->id])}}">{{ $user->first_name.' '.$user->last_name }}</a>
                     <span class="users-list-date">{{ $user->created_at }}</span>
                 </li>

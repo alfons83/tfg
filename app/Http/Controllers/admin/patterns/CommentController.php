@@ -35,7 +35,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('admin.patterns.comments.index');
+        return view('admin.patterns.comments.create');
     }
 
     /**

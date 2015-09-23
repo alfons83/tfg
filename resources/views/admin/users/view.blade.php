@@ -1,14 +1,12 @@
 @extends('admin._includes.layout')
 @section('content')
-
     <div class="container">
         <div class="row">
             <section style="padding-bottom: 50px; padding-top: 50px;">
                 <div class="row">
                     <div class="col-md-4">
-                        @foreach($user->photos as $photo)
-                            <img src="{{ asset($photo->path) }}">
-                        @endforeach
+                        <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">
+
                         <br/>
                         <br/>
                         <label>Full Name</label>

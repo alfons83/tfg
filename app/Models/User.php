@@ -55,11 +55,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         }
     }
 
-    public function photos()
-    {
-        return $this->hasMany('App\Models\User_profile');
-    }
-
 
     public function patterns()
     {
@@ -81,7 +76,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public function profile()
     {
-        return $this->hasOne('App\Models\User_profile');
+        return $this->hasOne('App\Models\UserProfile');
     }
 
     public function getFullName()

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin\patterns;
 
+use App\Models\patterns\Category;
 use App\Models\patterns\SubCategory;
 
 use Illuminate\Http\Request;
@@ -73,8 +74,9 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
         $subcategory = SubCategory::findOrFail($id);
-        return view('admin.patterns.subcategory.edit', compact('subcategory'));
+        return view('admin.patterns.subcategory.edit', compact('subcategory', 'categories'));
 
     }
 

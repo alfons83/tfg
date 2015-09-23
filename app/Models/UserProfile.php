@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class User_profile extends Model
+class UserProfile extends Model
 {
     /**
      * The database table used by the model.

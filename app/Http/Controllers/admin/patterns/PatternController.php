@@ -22,7 +22,11 @@ class PatternController extends Controller
      */
     public function index()
     {
-        $patterns = patterns\Pattern::all();
+        if(Auth::user()->type == 'user') {
+            $patterns = patterns\Pattern::where('user_id', Auth::user()->id)->get();
+        }
+        else
+            $patterns = patterns\Pattern::all();
 
         return view('admin.patterns.patterns.index', compact('patterns'));
     }
