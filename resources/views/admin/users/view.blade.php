@@ -5,7 +5,7 @@
             <section style="padding-bottom: 50px; padding-top: 50px;">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">
+                        <img src="{{ asset($user->profile->path) }}" alt="" class="img-responsive">
 
                         <br/>
                         <br/>

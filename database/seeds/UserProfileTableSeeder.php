@@ -13,7 +13,20 @@ class UserProfileTableSeeder extends Seeder
     {
         DB::table('user_profiles');
 
+        factory(App\Models\UserProfile::class)->create([
 
-        factory(App\Models\UserProfile::class, 50)->create();
+            'path' => '',
+            'gender' => 'male',
+            'birthdate' => '',
+            'bio'=> 'Profesor de Secundaria y ciclos Formativos de la GVA. Actualmente terminando el Grado en Nuevas Tecnologías de la Información',
+            'twitter' => '',
+            'website' => '',
+            'user_id' => '1'
+
+        ]);
+
+
+
+        /*factory(App\Models\UserProfile::class, 50)->create();*/
     }
 }

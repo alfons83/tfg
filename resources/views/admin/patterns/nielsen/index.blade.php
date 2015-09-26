@@ -18,8 +18,8 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Acciones</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>

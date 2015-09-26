@@ -4,13 +4,13 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="box box-info">
-                    <div class="box-header ">Categoria</div>
+                    <div class="box-header ">Category</div>
                     <div class="box-body pad">
 
                         <div class="box-footer clearfix">
                             <a class="btn btn-info pull-right" href="{{ route('admin.patterns-category.create') }}"
                                role="button">
-                                Nueva Categoria
+                                New Category
                             </a>
                         </div>
                         <div class="panel-body">
@@ -18,9 +18,9 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Descripciones</th>
-                                    <th>Acciones</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>

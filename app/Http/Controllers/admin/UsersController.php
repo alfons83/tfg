@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Models\patterns\Pattern;
 use App\Models\User;
 
-use App\Models\User_profile;
+
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Input;

@@ -13,7 +13,7 @@ class PatternPhotosTableSeeder extends Seeder
     {
         DB::table('pattern_photos');
 
-        factory(App\Models\patterns\Photos::class, 50)->create();
+        /*factory(App\Models\patterns\Photos::class, 50)->create();*/
 
     }
 }

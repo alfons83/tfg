@@ -25,6 +25,7 @@ class CreatePatternSubcategoriesTable extends Migration
             $table->foreign('category_id')
                 ->references('id')
                 ->on('pattern_categories')
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
 
 

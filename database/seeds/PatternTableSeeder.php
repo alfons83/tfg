@@ -14,6 +14,6 @@ class PatternTableSeeder extends Seeder
         DB::table('patterns');
 
 
-        factory(App\Models\patterns\Pattern::class, 50)->create();
+        /*factory(App\Models\patterns\Pattern::class, 50)->create();*/
     }
 }

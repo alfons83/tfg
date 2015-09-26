@@ -14,6 +14,6 @@ class PatternCommentTableSeeder extends Seeder
         DB::table('pattern_comments');
 
 
-        factory(App\Models\patterns\Comment::class, 50)->create();
+        /*factory(App\Models\patterns\Comment::class, 50)->create();*/
     }
 }

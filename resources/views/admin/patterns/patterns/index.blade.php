@@ -23,7 +23,7 @@
                             <th>title</th>
                             <th>Author</th>
                             <th>Status</th>
-                            <th>Acciones</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -8,11 +8,11 @@
                     <div class="box-header ">Editar Usuario: <strong>{{ $user->getFullName() }} </strong></div>
                     <div class="box-body pad">
 
-                        @if(Session::has('message'))
+                       {{-- @if(Session::has('message'))
 
                             <p class="alert alert-success">{{ Session::get('message') }}</p>
 
-                        @endif
+                        @endif--}}
 
                         {!! Form::Model($user, ['route' => ['admin.users.update', $user->id], 'method' => 'PUT', 'files' => true]) !!}
 
@@ -32,11 +32,23 @@
                             <div class="col-md-4">
 
                                 <div class="form-group">
-                                    <label for="">Tipo</label>
+                                    <label for="">Type</label>
                                     <select class="form-control input-sm" name="type">
                                         <option value="admin" {{ $user->type === 'admin' ? 'selected' : '' }}>Admin</option>
                                         <option value="expert" {{ $user->type === 'expert' ? 'selected' : '' }}>Expert</option>
                                         <option value="user" {{ $user->type === 'user' ? 'selected' : '' }}>User</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                <div class="form-group">
+                                    <label for="">Active</label>
+                                    <select class="form-control input-sm" name="active">
+                                        <option value="1" {{ $user->active === 1 ? 'selected' : '' }}>Active</option>
+                                        <option value="0" {{ $user->active === 0 ? 'selected' : '' }}>Deactivated</option>
                                     </select>
                                 </div>
 
@@ -56,7 +68,7 @@
                             </div>
                             <div class="row">
 
-                        <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">
+                        {{--<img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">--}}
 
                             </div>
 

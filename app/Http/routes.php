@@ -179,28 +179,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'type:expert'], function () {
 
 
-/*
-        // Admin Users Profile
+        Route::resource("admin/users", "admin\\UsersController");
 
-        Route::get('admin/user/profile', 'admin\\UsersController@profile');*/
 
         // Admin Patterns Routes
 
         Route::resource("admin/patterns", "admin\\patterns\\PatternController");
+        Route::post("admin/upload-photo-pattern", "admin\\patterns\\PatternController@postUploadPhoto");
 
-      /*  // Admin Patterns Tag Routes
+        // Admin Patterns Subcategory Routes
 
-        Route::resource("admin/patterns/subcategory","admin\\patterns\\SubcategoryController");
-
-
-        // Admin Blog Category Routes
-
-        Route::resource("admin/patterns/category", "admin\\patterns\\CategoryController");
+        Route::resource("admin/patterns-subcategory","admin\\patterns\\SubcategoryController");
 
 
-        // Admin Blog Comments Routes
+        // Admin PatternsCategory Routes
 
-        Route::resource("admin/patterns/comments", "admin\\patterns\\CommentController");*/
+        Route::resource("admin/patterns-category", "admin\\patterns\\CategoryController");
+        Route::get("admin/patterns-category-subcategories", "admin\\patterns\\CategoryController@getSubcategories");
+
+        // Admin Category Routes
+
+        Route::resource("admin/patterns-nielsen", "admin\\patterns\\NielsenController");
+
+
+        // Admin Comments Routes
+
+        Route::resource("admin/patterns-comments", "admin\\patterns\\CommentController");
 
 
 
@@ -210,28 +214,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'type:user'], function () {
 
 
-        /*
-                // Admin Users Profile
+        Route::resource("admin/users", "admin\\UsersController");
 
-                Route::get('admin/user/profile', 'admin\\UsersController@profile');*/
 
         // Admin Patterns Routes
 
         Route::resource("admin/patterns", "admin\\patterns\\PatternController");
+        Route::post("admin/upload-photo-pattern", "admin\\patterns\\PatternController@postUploadPhoto");
 
-        /*  // Admin Patterns Tag Routes
+        // Admin Patterns Subcategory Routes
 
-          Route::resource("admin/patterns/subcategory","admin\\patterns\\SubcategoryController");
-
-
-          // Admin Blog Category Routes
-
-          Route::resource("admin/patterns/category", "admin\\patterns\\CategoryController");
+        Route::resource("admin/patterns-subcategory","admin\\patterns\\SubcategoryController");
 
 
-          // Admin Blog Comments Routes
+        // Admin PatternsCategory Routes
 
-          Route::resource("admin/patterns/comments", "admin\\patterns\\CommentController");*/
+        Route::resource("admin/patterns-category", "admin\\patterns\\CategoryController");
+        Route::get("admin/patterns-category-subcategories", "admin\\patterns\\CategoryController@getSubcategories");
+
+        // Admin Category Routes
+
+        Route::resource("admin/patterns-nielsen", "admin\\patterns\\NielsenController");
+
+
+        // Admin Comments Routes
+
+        Route::resource("admin/patterns-comments", "admin\\patterns\\CommentController");
 
 
 

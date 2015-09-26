@@ -19,7 +19,7 @@ class UserProfile extends Model
      *
      * @var array
      */
-    protected $fillable = ['path','gender','bio','birthdate', 'twitter', 'website'];
+    protected $fillable = ['path','gender','bio','birthdate', 'twitter', 'website', 'user_id'];
 
     /**
      * The attributes excluded from the model's JSON form.

@@ -18,13 +18,13 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Usuario</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
+                            <th>User</th>
+                            <th>Name</th>
+                            <th>LastName</th>
                             <th>Email</th>
-                            <th>Tipo</th>
-                            <th>Activo</th>
-                            <th>Acciones</th>
+                            <th>Type</th>
+                            <th>Active</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>

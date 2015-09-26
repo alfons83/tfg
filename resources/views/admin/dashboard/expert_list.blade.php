@@ -10,9 +10,9 @@
         <ul class="users-list clearfix">
             @foreach($usersExperts as $user)
                 <li data-id="{{ $user->id }}">
-{{--
-                    <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">
---}}
+
+                    <img src="{{ asset($user->profile->path) }}" alt="" class="img-responsive">
+
 
                     <a class="users-list-name" href="{{route('admin.users.show', ['users' => $user->id])}}">{{ $user->first_name.' '.$user->last_name }}</a>
                     <span class="users-list-date">{{ $user->created_at }}</span>
@@ -20,7 +20,16 @@
             @endforeach
         </ul>
     </div>
-    <div class="box-footer text-center">
-        <a href="{{route('admin.users.index')}}" class="uppercase">View All Users</a>
-    </div>
+
+
+    @if(Auth::user()->type === 'admin')
+
+        <div class="box-footer text-center">
+            <a href="{{route('admin.users.index')}}" class="uppercase">View All Users</a>
+        </div>
+    @else
+
+    @endif
+
+
 </div>

@@ -21,10 +21,10 @@ class UserTableSeeder extends Seeder
             'last_name' => 'Serrano Albert',
             'email' => 'admin@admin.com',
             'type' => 'admin',
-            'active' => 'true',
+            'active' => '1',
             'password' => bcrypt('admin')
         ]);
 
-        factory(App\Models\User::class, 49)->create();
+        /*factory(App\Models\User::class, 49)->create();*/
     }
 }

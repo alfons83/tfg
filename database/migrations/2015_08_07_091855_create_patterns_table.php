@@ -29,6 +29,7 @@ class CreatePatternsTable extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->integer('subcategory_id')->unsigned();
@@ -36,6 +37,7 @@ class CreatePatternsTable extends Migration
             $table->foreign('subcategory_id')
                 ->references('id')
                 ->on('pattern_subcategories')
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->integer('rule_id')->unsigned();
@@ -43,6 +45,7 @@ class CreatePatternsTable extends Migration
             $table->foreign('rule_id')
                 ->references('id')
                 ->on('pattern_rules_nielsen')
+                ->onUpdate('cascade')
                 ->onDelete('cascade');
 
             $table->timestamps();

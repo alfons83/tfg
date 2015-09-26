@@ -76,7 +76,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public function profile()
     {
-        return $this->hasOne('App\Models\UserProfile');
+        return $this->hasOne('App\Models\UserProfile','user_id');
     }
 
     public function getFullName()

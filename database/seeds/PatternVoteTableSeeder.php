@@ -14,6 +14,6 @@ class PatternVoteTableSeeder extends Seeder
         DB::table('pattern_votes');
 
 
-        factory(App\Models\patterns\Vote::class, 50)->create();
+        /*factory(App\Models\patterns\Vote::class, 50)->create();*/
     }
 }
