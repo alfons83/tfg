@@ -2,43 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0975fe00-ea1a-4c7e-a551-da909556edea" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/66489.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/patterns/19Screen Shot 2015-09-02 at 10.18.53.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/patterns/1Screen Shot 2015-09-05 at 01.57.46.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/patterns/25Screen Shot 2015-09-02 at 10.18.53.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/patterns/2Screen Shot 2015-09-02 at 10.18.53.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/patterns/32Screen Shot 2015-09-02 at 10.18.53.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/patterns/39Screen Shot 2015-09-02 at 10.18.53.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/users/user_1/18694.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/uploads/users/user_1/65123.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_08_03_190247_create_user_profiles_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_08_03_190247_create_user_profiles_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_08_06_130926_create_pattern_subcategories_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_08_06_130926_create_pattern_subcategories_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_08_07_091855_create_patterns_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_08_07_091855_create_patterns_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_08_07_092552_create_pattern_votes_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_08_07_092552_create_pattern_votes_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2015_08_25_130911_create_pattern_comments_table.php" afterPath="$PROJECT_DIR$/database/migrations/2015_08_25_130911_create_pattern_comments_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/PatternCommentTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/PatternCommentTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/PatternPhotosTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/PatternPhotosTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/PatternTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/PatternTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/PatternVoteTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/PatternVoteTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/User.php" afterPath="$PROJECT_DIR$/app/Models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/UserProfile.php" afterPath="$PROJECT_DIR$/app/Models/UserProfile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/UserProfileTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/UserProfileTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/UsersController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/UsersController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.php" afterPath="$PROJECT_DIR$/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/dashboard/expert_list.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard/expert_list.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/_includes/header.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/_includes/header.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/patterns/category/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/patterns/category/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/patterns/nielsen/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/patterns/nielsen/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/patterns/patterns/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/patterns/patterns/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/patterns/subcategory/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/patterns/subcategory/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/_includes/sidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/_includes/sidebar.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/dashboard/user_list.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard/user_list.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/users/view.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/users/view.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="laravel.iws" />
@@ -109,6 +73,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="16" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -124,7 +98,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/admin/patterns/patterns/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/User_profile.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/patterns/CategoryController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/admin/patterns/NielsenController.php" />
@@ -175,6 +148,7 @@
         <option value="$PROJECT_DIR$/resources/views/admin/_includes/header.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" />
         <option value="$PROJECT_DIR$/database/seeds/UserProfileTableSeeder.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -432,14 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -824,6 +790,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.80241495">
           <caret line="241" column="89" selection-start-line="241" selection-start-column="89" selection-end-line="241" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="16" />
           <folding />
         </state>
       </provider>
