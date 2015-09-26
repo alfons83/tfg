@@ -2,7 +2,7 @@
 @section('content')
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{url('http://laravel.app/')}}"><b>Admin</b>LTE</a>
+        <a href="{{url('http://laravel.app/')}}"><b>Admin</b>Patterns</a>
     </div>
 
     <div class="register-box-body">
@@ -27,11 +27,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-8">
-                    <div class="checkbox icheck">
+                   {{-- <div class="checkbox icheck">
                         <label>
                             <input type="checkbox"> I agree to the <a href="#">terms</a>
                         </label>
-                    </div>
+                    </div>--}}
                 </div><!-- /.col -->
                 <div class="col-xs-4">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
@@ -39,11 +39,11 @@
             </div>
         </form>
 
-        <div class="social-auth-links text-center">
+       {{-- <div class="social-auth-links text-center">
             <p>- OR -</p>
             <a href="{{url('http://laravel.app/facebook/authorize')}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using Facebook</a>
             <a href="{{url('http://laravel.app/github/authorize')}}" class="btn btn-block btn-social btn-github btn-flat"><i class="fa fa-github-plus"></i> Sign up using Github</a>
-        </div>
+        </div>--}}
 
         <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
     </div><!-- /.form-box -->

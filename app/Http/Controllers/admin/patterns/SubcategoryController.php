@@ -32,8 +32,13 @@ class SubcategoryController extends Controller
      * @return Response
      */
     public function create()
+
+
     {
-        return view('admin.patterns.subcategory.create');
+
+        $categories = Category::all();
+
+        return view('admin.patterns.subcategory.create',compact('categories'));
     }
 
     /**

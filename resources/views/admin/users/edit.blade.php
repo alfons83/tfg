@@ -42,7 +42,25 @@
 
                             </div>
 
+                        {{--    <div class="col-md-4">
+
+                                <div class="form-group">
+                                    <label for="">Gender</label>
+                                    <select class="form-control input-sm" name="gender">
+                                        <option value="male" {{ $user->profile->type === 'male' ? 'selected' : '' }}>Male</option>
+                                        <option value="female" {{ $user->profile->type === 'female' ? 'selected' : '' }}>Female</option>
+
+                                    </select>
+                                </div>
+--}}
+                            </div>
+                            <div class="row">
+
                         <img src="{{ asset('uploads/users/user_'.$user->id.'/'.$user->profile->path) }}" alt="" class="img-responsive">
+
+                            </div>
+
+
 
                         {!! Form::file('image') !!}
 

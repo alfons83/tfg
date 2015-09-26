@@ -57,7 +57,7 @@
 
                             </div>--}}
 
-                        <button type="submit" class="btn btn-default">Actualizar usuario</button>
+                        <button type="submit" class="btn btn-default">Actualizar pattern</button>
 
                         {!! Form::Close() !!}
 

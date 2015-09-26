@@ -19,7 +19,7 @@ $factory->define(App\Models\User::class, function ($faker) {
     ];
 });
 
-$factory->define(App\Models\User_profile::class, function ($faker) {
+$factory->define(App\Models\UserProfile::class, function ($faker) {
 
     return [
         'gender' => $faker->randomElement(['male','female']),

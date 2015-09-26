@@ -6,6 +6,7 @@ use App\Models\patterns\Pattern;
 use App\Models\User;
 
 use App\Models\User_profile;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Input;
 use File;
@@ -66,16 +67,16 @@ class UsersController extends Controller
             Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
 
             // Borramos las fotos del sistema
-            $photos = User_profile::where('user_id', $user->id)->get();
+            $photos = UserProfile::where('user_id', $user->id)->get();
 
             if($photos)
                 File::delete(array_pluck($photos, 'path'));
 
             // Borramos las fotos de la BD
-            User_profile::where('user_id', $user->id)->delete();
+            UserProfile::where('user_id', $user->id)->delete();
 
             // Metemos la foto en la BD
-            User_profile::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
+            UserProfile::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
 
             //return redirect('/uploads/'.$fileName);
         }
@@ -141,16 +142,16 @@ class UsersController extends Controller
             Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
 
             // Borramos las fotos del sistema
-            $photos = User_profile::where('user_id', $user->id)->get();
+            $photos = UserProfile::where('user_id', $user->id)->get();
 
             if($photos)
                 File::delete(array_pluck($photos, 'path'));
 
             // Borramos las fotos de la BD
-            User_profile::where('user_id', $user->id)->delete();
+            UserProfile::where('user_id', $user->id)->delete();
 
             // Metemos la foto en la BD
-            User_profile::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
+            UserProfile::create(['path' => $destinationPath.$fileName, 'user_id' => $user->id]);
 
             //return redirect('/uploads/'.$fileName);
         }
