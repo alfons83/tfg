@@ -35,7 +35,7 @@ class AdminController extends Controller
         $patterns = Pattern::all();
 
         $category = Category::all();
-        $subcategory = Subcategory::all();
+        $subcategory = SubCategory::all();
         $nielsen = RulesNielsen::all();
         $comments = Comment::all();
 

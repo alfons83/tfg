@@ -14,7 +14,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
         DB::table('pattern_subcategories');
 
 
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '1',*/
             'name' => 'Forms',
@@ -23,7 +23,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
 
         ]);
 
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
            /* 'id' => '2',*/
             'name' => 'Explaining the process',
@@ -31,7 +31,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '1'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '3',*/
             'name' => 'Community driven',
@@ -40,7 +40,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
 
         ]);
 
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '4',*/
             'name' => 'Tabs',
@@ -48,7 +48,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '2'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '5',*/
             'name' => 'Jumping in hierarchy',
@@ -56,7 +56,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '2'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '6',*/
             'name' => 'Menus',
@@ -64,7 +64,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '2'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
            /* 'id' => '7',*/
             'name' => 'Content',
@@ -73,7 +73,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
 
         ]);
 
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '8',*/
             'name' => 'Tables',
@@ -81,7 +81,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '3'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '9',*/
             'name' => 'Formatting data',
@@ -89,7 +89,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '3'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '10',*/
             'name' => 'Images',
@@ -97,7 +97,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '3'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '11',*/
             'name' => 'Search',
@@ -115,7 +115,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
 
         ]);
 
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
            /* 'id' => '13',*/
             'name' => 'Ego',
@@ -124,7 +124,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
 
         ]);
 
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '14',*/
             'name' => 'Views',
@@ -132,7 +132,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '5'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
             /*'id' => '15',*/
             'name' => 'Shopping',
@@ -140,7 +140,7 @@ class PatternSubcategoriesTableSeeder extends Seeder
             'category_id' => '5'
 
         ]);
-        factory(App\Models\patterns\Subcategory::class)->create([
+        factory(App\Models\patterns\SubCategory::class)->create([
 
            /* 'id' => '16',*/
             'name' => 'Increasing frequency',

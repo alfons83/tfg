@@ -77,7 +77,7 @@ $factory->define(App\Models\patterns\Category::class, function ($faker) {
 
 });
 
-$factory->define(App\Models\patterns\Subcategory::class, function ($faker) {
+$factory->define(App\Models\patterns\SubCategory::class, function ($faker) {
     return [
         /*'name' => $faker->word,
         'description' => $faker->text,
